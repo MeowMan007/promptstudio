@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          runtime: node@24
+          install: false
+          cache: true
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with:
+          enable-cache: true
+
+      - name: Install dependencies and start local services
+        run: make setup
+
+      - name: Lint and type check
+        run: make lint
+
+      - name: Unit tests
+        run: make test
+
+      - name: Contract tests
+        run: make test-contract
+
+      - name: Integration tests
+        run: make test-integration
+
+      - name: End-to-end smoke tests
+        run: make test-e2e
+
+      - name: Full merge checks
+        if: github.event_name == 'push'
+        run: |
+          make test-roundtrip
+          make security
+          make eval
+          make export-check
+          docker compose build minio
