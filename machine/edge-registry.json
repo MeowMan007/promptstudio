@@ -1,0 +1,71 @@
+{
+  "registry_version": "1.0.0",
+  "edges": {
+    "contains": {
+      "from": ["frame", "screen", "user_flow", "epic"],
+      "to": ["*"],
+      "acyclic": true
+    },
+    "derived_from": { "from": ["*"], "to": ["*"] },
+    "refined_into": {
+      "from": ["idea", "note"],
+      "to": ["requirement", "decision", "screen"]
+    },
+    "implements": {
+      "from": ["component", "api_endpoint", "task", "screen"],
+      "to": ["requirement", "feature"]
+    },
+    "realized_by": { "derived_inverse_of": "implements" },
+    "validated_by": {
+      "from": ["requirement", "screen", "api_endpoint", "component"],
+      "to": ["test_case", "evaluation_case"]
+    },
+    "depends_on": {
+      "from": ["task", "component", "requirement"],
+      "to": ["task", "component", "requirement"],
+      "acyclic": true
+    },
+    "blocks": {
+      "from": ["issue", "risk", "question"],
+      "to": ["task", "component", "requirement"]
+    },
+    "supports": { "from": ["source", "claim"], "to": ["*"] },
+    "contradicts": { "from": ["*"], "to": ["*"], "creates_issue": true },
+    "supersedes": {
+      "from": ["decision", "adr", "requirement"],
+      "to": ["decision", "adr", "requirement"],
+      "requires_reason": true
+    },
+    "navigates_to": { "from": ["screen", "interaction"], "to": ["screen"] },
+    "calls": { "from": ["component", "screen"], "to": ["api_endpoint"] },
+    "reads": { "from": ["api_endpoint", "component"], "to": ["data_entity"] },
+    "writes": { "from": ["api_endpoint", "component"], "to": ["data_entity"] },
+    "publishes_to": { "from": ["component"], "to": ["event_contract"] },
+    "subscribes_to": { "from": ["component"], "to": ["event_contract"] },
+    "uses_prompt": {
+      "from": ["component", "prompt_flow", "field_binding"],
+      "to": ["prompt"]
+    },
+    "uses_skill": { "from": ["prompt_flow", "prompt"], "to": ["skill"] },
+    "uses_tool": {
+      "from": ["prompt", "prompt_flow", "skill"],
+      "to": ["tool_definition"]
+    },
+    "assigned_to": { "from": ["task", "question", "risk"], "to": ["person"] },
+    "mitigates": {
+      "from": ["control", "task", "decision"],
+      "to": ["risk", "threat"]
+    },
+    "relates_to": {
+      "from": ["*"],
+      "to": ["*"],
+      "excluded_from_coverage": true
+    },
+    "untyped": {
+      "from": ["*"],
+      "to": ["*"],
+      "warning": true,
+      "excluded_from_coverage": true
+    }
+  }
+}

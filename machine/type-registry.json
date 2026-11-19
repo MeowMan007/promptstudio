@@ -1,0 +1,267 @@
+{
+  "registry_version": "1.0.0",
+  "types": {
+    "brief": {
+      "family": "thinking",
+      "required": ["summary", "raw_input"],
+      "promptable": ["summary"]
+    },
+    "idea": {
+      "family": "thinking",
+      "required": ["content"],
+      "promptable": ["content"]
+    },
+    "note": { "family": "thinking", "required": ["content"], "promptable": [] },
+    "question": {
+      "family": "thinking",
+      "required": ["question", "blocking_level", "owner"],
+      "promptable": ["question"]
+    },
+    "assumption": {
+      "family": "thinking",
+      "required": ["statement", "confidence", "validation_plan"],
+      "promptable": ["validation_plan"]
+    },
+    "hypothesis": {
+      "family": "thinking",
+      "required": ["statement", "test"],
+      "promptable": ["test"]
+    },
+    "alternative": {
+      "family": "thinking",
+      "required": ["option", "pros", "cons"],
+      "promptable": ["pros", "cons"]
+    },
+    "insight": {
+      "family": "thinking",
+      "required": ["statement", "evidence"],
+      "promptable": []
+    },
+    "problem": {
+      "family": "product",
+      "required": ["user", "pain", "context"],
+      "promptable": ["pain"]
+    },
+    "persona": {
+      "family": "product",
+      "required": ["name", "goals", "context"],
+      "promptable": ["goals"]
+    },
+    "user_story": {
+      "family": "product",
+      "required": ["as_a", "i_want", "so_that"],
+      "promptable": ["so_that"]
+    },
+    "requirement": {
+      "family": "product",
+      "required": [
+        "ears_pattern",
+        "clauses",
+        "priority",
+        "acceptance_criteria"
+      ],
+      "promptable": ["acceptance_criteria", "clauses", "priority"]
+    },
+    "constraint": {
+      "family": "product",
+      "required": ["statement", "kind"],
+      "promptable": []
+    },
+    "feature": {
+      "family": "product",
+      "required": ["name", "outcome"],
+      "promptable": ["outcome"]
+    },
+    "exclusion": {
+      "family": "product",
+      "required": ["statement", "reason"],
+      "promptable": []
+    },
+    "decision": {
+      "family": "decision",
+      "required": [
+        "chosen_option",
+        "alternatives",
+        "rationale",
+        "consequences"
+      ],
+      "promptable": ["alternatives", "consequences"]
+    },
+    "adr": {
+      "family": "decision",
+      "required": ["context", "decision", "status", "consequences"],
+      "promptable": ["consequences"]
+    },
+    "risk": {
+      "family": "decision",
+      "required": ["statement", "probability", "impact", "mitigation", "owner"],
+      "promptable": ["mitigation"]
+    },
+    "issue": {
+      "family": "decision",
+      "required": ["statement", "severity", "owner"],
+      "promptable": []
+    },
+    "user_flow": {
+      "family": "ux",
+      "required": ["name", "steps"],
+      "promptable": ["steps"]
+    },
+    "screen": {
+      "family": "ux",
+      "required": ["name", "route", "purpose", "regions", "elements", "states"],
+      "promptable": ["states", "interactions", "elements"]
+    },
+    "wireframe_component": {
+      "family": "ux",
+      "required": ["component", "label"],
+      "promptable": ["label"]
+    },
+    "interaction": {
+      "family": "ux",
+      "required": ["trigger", "target", "effect"],
+      "promptable": ["effect"]
+    },
+    "ui_state": {
+      "family": "ux",
+      "required": ["name", "entry_condition", "display"],
+      "promptable": ["display"]
+    },
+    "design_token": {
+      "family": "design",
+      "required": ["name", "value", "type"],
+      "promptable": []
+    },
+    "component_spec": {
+      "family": "design",
+      "required": ["name", "variants", "usage"],
+      "promptable": ["usage"]
+    },
+    "accessibility_rule": {
+      "family": "design",
+      "required": ["rule", "wcag_ref"],
+      "promptable": []
+    },
+    "component": {
+      "family": "engineering",
+      "required": ["name", "responsibility", "interfaces"],
+      "promptable": ["responsibility", "interfaces"]
+    },
+    "data_entity": {
+      "family": "engineering",
+      "required": ["name", "fields", "keys"],
+      "promptable": ["fields"]
+    },
+    "api_endpoint": {
+      "family": "engineering",
+      "required": ["method", "path", "auth", "request", "response", "errors"],
+      "promptable": ["errors", "response"]
+    },
+    "event_contract": {
+      "family": "engineering",
+      "required": ["name", "schema", "producer"],
+      "promptable": ["schema"]
+    },
+    "integration": {
+      "family": "engineering",
+      "required": ["system", "purpose", "auth"],
+      "promptable": []
+    },
+    "environment": {
+      "family": "engineering",
+      "required": ["name", "commands"],
+      "promptable": []
+    },
+    "prompt": {
+      "family": "prompting",
+      "required": ["name", "blocks", "output_contract"],
+      "promptable": ["blocks"]
+    },
+    "prompt_block": {
+      "family": "prompting",
+      "required": ["block_type", "content"],
+      "promptable": ["content"]
+    },
+    "prompt_variable": {
+      "family": "prompting",
+      "required": ["name", "type", "secret"],
+      "promptable": []
+    },
+    "prompt_flow": {
+      "family": "prompting",
+      "required": ["nodes", "edges"],
+      "promptable": []
+    },
+    "field_binding": {
+      "family": "prompting",
+      "required": [
+        "target",
+        "prompt_version_id",
+        "context_rule",
+        "output_contract",
+        "policy"
+      ],
+      "promptable": []
+    },
+    "tool_definition": {
+      "family": "prompting",
+      "required": ["name", "input_schema", "permission_class"],
+      "promptable": []
+    },
+    "skill": {
+      "family": "prompting",
+      "required": ["name", "version", "content_hash", "trust"],
+      "promptable": []
+    },
+    "test_case": {
+      "family": "quality",
+      "required": ["scenario", "expected", "linked_artifacts"],
+      "promptable": ["steps"]
+    },
+    "evaluation_case": {
+      "family": "quality",
+      "required": ["input", "expected_or_rubric"],
+      "promptable": []
+    },
+    "threat": {
+      "family": "quality",
+      "required": ["threat", "asset", "control"],
+      "promptable": ["control"]
+    },
+    "metric": {
+      "family": "quality",
+      "required": ["name", "definition", "target"],
+      "promptable": []
+    },
+    "epic": {
+      "family": "delivery",
+      "required": ["name", "outcome"],
+      "promptable": []
+    },
+    "task": {
+      "family": "delivery",
+      "required": ["title", "acceptance_criteria", "depends_on"],
+      "promptable": ["acceptance_criteria"]
+    },
+    "milestone": {
+      "family": "delivery",
+      "required": ["name", "exit_criteria"],
+      "promptable": []
+    },
+    "source": {
+      "family": "evidence",
+      "required": ["url_or_file", "title", "retrieved_at", "trust_level"],
+      "promptable": []
+    },
+    "attachment": {
+      "family": "evidence",
+      "required": ["storage_key", "mime", "checksum"],
+      "promptable": []
+    },
+    "claim": {
+      "family": "evidence",
+      "required": ["statement", "evidence_state"],
+      "promptable": []
+    }
+  }
+}
