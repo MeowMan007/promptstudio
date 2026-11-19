@@ -1,0 +1,28 @@
+{
+  "cases": [
+    { "rule_id": "VAL-01", "scenario": "invalid_payload_schema" },
+    { "rule_id": "VAL-02", "scenario": "duplicate_project_alias" },
+    { "rule_id": "VAL-03", "scenario": "unresolved_edge_endpoint" },
+    { "rule_id": "VAL-04", "scenario": "disallowed_edge_pair" },
+    { "rule_id": "VAL-05", "scenario": "dependency_cycle" },
+    { "rule_id": "VAL-06", "scenario": "approved_must_without_acceptance" },
+    { "rule_id": "VAL-07", "scenario": "approved_requirement_without_test" },
+    { "rule_id": "VAL-08", "scenario": "component_without_implementation" },
+    { "rule_id": "VAL-09", "scenario": "api_without_component_or_contract" },
+    { "rule_id": "VAL-10", "scenario": "unknown_data_entity_reference" },
+    { "rule_id": "VAL-11", "scenario": "screen_missing_states" },
+    { "rule_id": "VAL-12", "scenario": "navigation_target_missing" },
+    { "rule_id": "VAL-13", "scenario": "unmapped_user_flow_step" },
+    { "rule_id": "VAL-14", "scenario": "critical_risk_incomplete" },
+    { "rule_id": "VAL-15", "scenario": "research_claim_without_source" },
+    { "rule_id": "VAL-16", "scenario": "superseding_decision_without_reason" },
+    { "rule_id": "VAL-17", "scenario": "prompt_without_contract_or_eval" },
+    { "rule_id": "VAL-18", "scenario": "secret_variable_literal" },
+    { "rule_id": "VAL-19", "scenario": "invalid_skill_frontmatter" },
+    { "rule_id": "VAL-20", "scenario": "secret_pattern_in_text" },
+    { "rule_id": "VAL-21", "scenario": "diagram_graph_drift" },
+    { "rule_id": "VAL-22", "scenario": "semantic_hash_mismatch" },
+    { "rule_id": "VAL-23", "scenario": "task_without_deliverable" },
+    { "rule_id": "VAL-24", "scenario": "unrecorded_export_revision" }
+  ]
+}

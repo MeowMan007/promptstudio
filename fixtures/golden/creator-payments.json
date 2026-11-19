@@ -1,0 +1,458 @@
+{
+  "fixture_schema_version": "1.0.0",
+  "project": {
+    "id": "prj_00000000000000000000000001",
+    "slug": "creator-payments",
+    "name": "Creator Payment Forms",
+    "current_revision": 1
+  },
+  "artifacts": [
+    {
+      "id": "art_00000000000000000000000001",
+      "alias": "BRF-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "brief",
+      "schema_version": "1.0.0",
+      "title": "Creator Payment Forms",
+      "body": "",
+      "payload": {
+        "summary": "Creators collect reliable payments through hosted forms.",
+        "raw_input": "Creators collect reliable payments through hosted forms."
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000002",
+      "alias": "REQ-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "requirement",
+      "schema_version": "1.0.0",
+      "title": "A creator can publish a payment form and review completed payments.",
+      "body": "",
+      "payload": {
+        "ears_pattern": "ubiquitous",
+        "clauses": {
+          "response": "A creator can publish a payment form and review completed payments."
+        },
+        "priority": "should",
+        "acceptance_criteria": [
+          {
+            "id": "AC-1",
+            "given": "the user is authorized",
+            "when": "the operation completes",
+            "then": "the result is recorded"
+          }
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000003",
+      "alias": "SCR-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "screen",
+      "schema_version": "1.0.0",
+      "title": "Payment Form",
+      "body": "",
+      "payload": {
+        "name": "Payment Form",
+        "route": "/payments/new",
+        "purpose": "Configure and publish a payment form.",
+        "regions": [
+          {
+            "id": "main",
+            "elements": ["primary-action"]
+          }
+        ],
+        "elements": [
+          {
+            "id": "primary-action",
+            "component": "button",
+            "label": "Continue",
+            "required": true
+          }
+        ],
+        "states": ["empty", "loading", "error", "success"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000004",
+      "alias": "ENT-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "data_entity",
+      "schema_version": "1.0.0",
+      "title": "Payment",
+      "body": "",
+      "payload": {
+        "name": "Payment",
+        "fields": ["id", "created_at"],
+        "keys": ["id"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000005",
+      "alias": "CMP-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "component",
+      "schema_version": "1.0.0",
+      "title": "Payment Form Service",
+      "body": "",
+      "payload": {
+        "name": "Payment Form Service",
+        "responsibility": "Creators collect reliable payments through hosted forms.",
+        "interfaces": ["http"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000006",
+      "alias": "API-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "api_endpoint",
+      "schema_version": "1.0.0",
+      "title": "POST /api/payments",
+      "body": "",
+      "payload": {
+        "method": "POST",
+        "path": "/api/payments",
+        "auth": "signed-in user",
+        "request": {
+          "content_type": "application/json"
+        },
+        "response": {
+          "content_type": "application/json"
+        },
+        "errors": {
+          "400": "invalid request",
+          "401": "unauthorized"
+        },
+        "data_entities": ["art_00000000000000000000000004"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000007",
+      "alias": "EVC-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "evaluation_case",
+      "schema_version": "1.0.0",
+      "title": "Payment Form Review evaluation",
+      "body": "",
+      "payload": {
+        "input": "Review this project context.",
+        "expected_or_rubric": "Return a concise, schema-valid review."
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000008",
+      "alias": "PRM-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "prompt",
+      "schema_version": "1.0.0",
+      "title": "Payment Form Review",
+      "body": "",
+      "payload": {
+        "name": "Payment Form Review",
+        "blocks": [
+          {
+            "block_type": "instruction",
+            "content": "Review the supplied project context and return actionable findings."
+          }
+        ],
+        "output_contract": {
+          "type": "object",
+          "required": ["findings"]
+        },
+        "evaluation_case_ids": ["art_00000000000000000000000007"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000009",
+      "alias": "SKL-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "skill",
+      "schema_version": "1.0.0",
+      "title": "payment-form-review",
+      "body": "",
+      "payload": {
+        "name": "payment-form-review",
+        "version": "1.0.0",
+        "content_hash": "sha256:golden-fixture",
+        "trust": "user",
+        "directory_name": "payment-form-review",
+        "frontmatter": {
+          "name": "payment-form-review",
+          "description": "Review saas project artifacts.",
+          "allowed_tools": ["read_project"]
+        },
+        "granted_tools": ["read_project"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000010",
+      "alias": "TSK-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "task",
+      "schema_version": "1.0.0",
+      "title": "Build hosted payment form",
+      "body": "",
+      "payload": {
+        "title": "Build hosted payment form",
+        "acceptance_criteria": [
+          "The primary workflow completes and records its result."
+        ],
+        "depends_on": [],
+        "deliverable_ids": [
+          "art_00000000000000000000000003",
+          "art_00000000000000000000000005",
+          "art_00000000000000000000000006"
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000011",
+      "alias": "FLW-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "user_flow",
+      "schema_version": "1.0.0",
+      "title": "Creator Payment Forms primary flow",
+      "body": "",
+      "payload": {
+        "name": "Creator Payment Forms primary flow",
+        "steps": [
+          {
+            "label": "Complete the primary workflow",
+            "screen_id": "art_00000000000000000000000003"
+          }
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000012",
+      "alias": "DEC-001",
+      "project_id": "prj_00000000000000000000000001",
+      "type": "decision",
+      "schema_version": "1.0.0",
+      "title": "Use a typed, auditable artifact graph",
+      "body": "",
+      "payload": {
+        "chosen_option": "typed graph",
+        "alternatives": ["unstructured notes"],
+        "rationale": "The graph supports validation and reproducible exports.",
+        "consequences": ["Artifacts use versioned contracts."]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_001",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000005",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "implements",
+      "metadata": {}
+    },
+    {
+      "id": "edge_002",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000005",
+      "target_id": "art_00000000000000000000000006",
+      "edge_type": "calls",
+      "metadata": {}
+    },
+    {
+      "id": "edge_003",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000006",
+      "target_id": "art_00000000000000000000000004",
+      "edge_type": "reads",
+      "metadata": {}
+    },
+    {
+      "id": "edge_004",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000003",
+      "target_id": "art_00000000000000000000000006",
+      "edge_type": "calls",
+      "metadata": {}
+    },
+    {
+      "id": "edge_005",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000008",
+      "target_id": "art_00000000000000000000000009",
+      "edge_type": "uses_skill",
+      "metadata": {}
+    },
+    {
+      "id": "edge_006",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000011",
+      "target_id": "art_00000000000000000000000003",
+      "edge_type": "contains",
+      "metadata": {}
+    },
+    {
+      "id": "edge_007",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000010",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "depends_on",
+      "metadata": {}
+    },
+    {
+      "id": "edge_008",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000001",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "derived_from",
+      "metadata": {}
+    },
+    {
+      "id": "edge_009",
+      "project_id": "prj_00000000000000000000000001",
+      "source_id": "art_00000000000000000000000012",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "relates_to",
+      "metadata": {}
+    }
+  ],
+  "expected_export": {
+    "format": "prompt-studio-project@1.0.0",
+    "files": [
+      "AGENTS.md",
+      "spec.md",
+      "contracts/payment.json",
+      "prompts/payment-review.md",
+      "skills/payment-form-review/SKILL.md"
+    ]
+  }
+}

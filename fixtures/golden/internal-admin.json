@@ -1,0 +1,458 @@
+{
+  "fixture_schema_version": "1.0.0",
+  "project": {
+    "id": "prj_00000000000000000000000002",
+    "slug": "internal-admin",
+    "name": "Internal Admin Tool",
+    "current_revision": 1
+  },
+  "artifacts": [
+    {
+      "id": "art_00000000000000000000000001",
+      "alias": "BRF-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "brief",
+      "schema_version": "1.0.0",
+      "title": "Internal Admin Tool",
+      "body": "",
+      "payload": {
+        "summary": "Operators review and update customer records with an audit trail.",
+        "raw_input": "Operators review and update customer records with an audit trail."
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000002",
+      "alias": "REQ-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "requirement",
+      "schema_version": "1.0.0",
+      "title": "An operator can find, inspect, update, and audit a customer record.",
+      "body": "",
+      "payload": {
+        "ears_pattern": "ubiquitous",
+        "clauses": {
+          "response": "An operator can find, inspect, update, and audit a customer record."
+        },
+        "priority": "should",
+        "acceptance_criteria": [
+          {
+            "id": "AC-1",
+            "given": "the user is authorized",
+            "when": "the operation completes",
+            "then": "the result is recorded"
+          }
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000003",
+      "alias": "SCR-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "screen",
+      "schema_version": "1.0.0",
+      "title": "Customer Directory",
+      "body": "",
+      "payload": {
+        "name": "Customer Directory",
+        "route": "/customers",
+        "purpose": "Search and manage customer records.",
+        "regions": [
+          {
+            "id": "main",
+            "elements": ["primary-action"]
+          }
+        ],
+        "elements": [
+          {
+            "id": "primary-action",
+            "component": "button",
+            "label": "Continue",
+            "required": true
+          }
+        ],
+        "states": ["empty", "loading", "error", "success"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000004",
+      "alias": "ENT-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "data_entity",
+      "schema_version": "1.0.0",
+      "title": "Customer",
+      "body": "",
+      "payload": {
+        "name": "Customer",
+        "fields": ["id", "created_at"],
+        "keys": ["id"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000005",
+      "alias": "CMP-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "component",
+      "schema_version": "1.0.0",
+      "title": "Customer Admin API",
+      "body": "",
+      "payload": {
+        "name": "Customer Admin API",
+        "responsibility": "Operators review and update customer records with an audit trail.",
+        "interfaces": ["http"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000006",
+      "alias": "API-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "api_endpoint",
+      "schema_version": "1.0.0",
+      "title": "PATCH /api/customers/{customer_id}",
+      "body": "",
+      "payload": {
+        "method": "PATCH",
+        "path": "/api/customers/{customer_id}",
+        "auth": "signed-in user",
+        "request": {
+          "content_type": "application/json"
+        },
+        "response": {
+          "content_type": "application/json"
+        },
+        "errors": {
+          "400": "invalid request",
+          "401": "unauthorized"
+        },
+        "data_entities": ["art_00000000000000000000000004"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000007",
+      "alias": "EVC-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "evaluation_case",
+      "schema_version": "1.0.0",
+      "title": "Customer Record Review evaluation",
+      "body": "",
+      "payload": {
+        "input": "Review this project context.",
+        "expected_or_rubric": "Return a concise, schema-valid review."
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000008",
+      "alias": "PRM-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "prompt",
+      "schema_version": "1.0.0",
+      "title": "Customer Record Review",
+      "body": "",
+      "payload": {
+        "name": "Customer Record Review",
+        "blocks": [
+          {
+            "block_type": "instruction",
+            "content": "Review the supplied project context and return actionable findings."
+          }
+        ],
+        "output_contract": {
+          "type": "object",
+          "required": ["findings"]
+        },
+        "evaluation_case_ids": ["art_00000000000000000000000007"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000009",
+      "alias": "SKL-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "skill",
+      "schema_version": "1.0.0",
+      "title": "customer-record-review",
+      "body": "",
+      "payload": {
+        "name": "customer-record-review",
+        "version": "1.0.0",
+        "content_hash": "sha256:golden-fixture",
+        "trust": "user",
+        "directory_name": "customer-record-review",
+        "frontmatter": {
+          "name": "customer-record-review",
+          "description": "Review crud project artifacts.",
+          "allowed_tools": ["read_project"]
+        },
+        "granted_tools": ["read_project"]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000010",
+      "alias": "TSK-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "task",
+      "schema_version": "1.0.0",
+      "title": "Build customer directory",
+      "body": "",
+      "payload": {
+        "title": "Build customer directory",
+        "acceptance_criteria": [
+          "The primary workflow completes and records its result."
+        ],
+        "depends_on": [],
+        "deliverable_ids": [
+          "art_00000000000000000000000003",
+          "art_00000000000000000000000005",
+          "art_00000000000000000000000006"
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000011",
+      "alias": "FLW-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "user_flow",
+      "schema_version": "1.0.0",
+      "title": "Internal Admin Tool primary flow",
+      "body": "",
+      "payload": {
+        "name": "Internal Admin Tool primary flow",
+        "steps": [
+          {
+            "label": "Complete the primary workflow",
+            "screen_id": "art_00000000000000000000000003"
+          }
+        ]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "art_00000000000000000000000012",
+      "alias": "DEC-001",
+      "project_id": "prj_00000000000000000000000002",
+      "type": "decision",
+      "schema_version": "1.0.0",
+      "title": "Use a typed, auditable artifact graph",
+      "body": "",
+      "payload": {
+        "chosen_option": "typed graph",
+        "alternatives": ["unstructured notes"],
+        "rationale": "The graph supports validation and reproducible exports.",
+        "consequences": ["Artifacts use versioned contracts."]
+      },
+      "status": "proposed",
+      "revision": 1,
+      "created_by": "golden-fixture",
+      "updated_by": "golden-fixture",
+      "visibility": "project",
+      "sensitivity": "internal",
+      "provenance": {
+        "origin": "user_input"
+      },
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "updated_at": "2026-01-01T00:00:00+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_001",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000005",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "implements",
+      "metadata": {}
+    },
+    {
+      "id": "edge_002",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000005",
+      "target_id": "art_00000000000000000000000006",
+      "edge_type": "calls",
+      "metadata": {}
+    },
+    {
+      "id": "edge_003",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000006",
+      "target_id": "art_00000000000000000000000004",
+      "edge_type": "reads",
+      "metadata": {}
+    },
+    {
+      "id": "edge_004",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000003",
+      "target_id": "art_00000000000000000000000006",
+      "edge_type": "calls",
+      "metadata": {}
+    },
+    {
+      "id": "edge_005",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000008",
+      "target_id": "art_00000000000000000000000009",
+      "edge_type": "uses_skill",
+      "metadata": {}
+    },
+    {
+      "id": "edge_006",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000011",
+      "target_id": "art_00000000000000000000000003",
+      "edge_type": "contains",
+      "metadata": {}
+    },
+    {
+      "id": "edge_007",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000010",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "depends_on",
+      "metadata": {}
+    },
+    {
+      "id": "edge_008",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000001",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "derived_from",
+      "metadata": {}
+    },
+    {
+      "id": "edge_009",
+      "project_id": "prj_00000000000000000000000002",
+      "source_id": "art_00000000000000000000000012",
+      "target_id": "art_00000000000000000000000002",
+      "edge_type": "relates_to",
+      "metadata": {}
+    }
+  ],
+  "expected_export": {
+    "format": "prompt-studio-project@1.0.0",
+    "files": [
+      "AGENTS.md",
+      "spec.md",
+      "contracts/customer.json",
+      "prompts/customer-review.md",
+      "skills/customer-record-review/SKILL.md"
+    ]
+  }
+}
