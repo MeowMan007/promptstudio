@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://promptstudio.app/schemas/payloads/screen.json",
+  "title": "ScreenPayload",
+  "type": "object",
+  "required": ["regions", "controls", "viewport"],
+  "properties": {
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "x", "y", "width", "height", "region_type"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "region_type": {
+            "type": "string",
+            "enum": ["header", "nav", "sidebar", "main", "footer", "modal", "overlay", "card", "form", "list", "custom"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "region_id", "control_type", "label", "x", "y", "width", "height"],
+        "properties": {
+          "id": { "type": "string" },
+          "region_id": { "type": "string" },
+          "control_type": {
+            "type": "string",
+            "enum": ["button", "input", "checkbox", "radio", "select", "textarea", "image", "label", "link", "icon", "divider", "custom"]
+          },
+          "label": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "state": {
+            "type": "string",
+            "enum": ["default", "hover", "active", "disabled", "error", "loading"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "required": ["width", "height", "breakpoint"],
+      "properties": {
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "breakpoint": {
+          "type": "string",
+          "enum": ["mobile", "tablet", "desktop"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "annotations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

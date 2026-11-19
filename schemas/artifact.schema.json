@@ -1,0 +1,2067 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "pattern": "^art_[0-9A-HJKMNP-TV-Z]{26}$",
+      "type": "string"
+    },
+    "alias": {
+      "pattern": "^[A-Z]{3}-[0-9]{3,6}$",
+      "type": "string"
+    },
+    "project_id": {
+      "pattern": "^prj_[0-9A-HJKMNP-TV-Z]{26}$",
+      "type": "string"
+    },
+    "type": {
+      "description": "Closed artifact type from machine/type-registry.json",
+      "enum": [
+        "accessibility_rule",
+        "adr",
+        "alternative",
+        "api_endpoint",
+        "assumption",
+        "attachment",
+        "brief",
+        "claim",
+        "component",
+        "component_spec",
+        "constraint",
+        "data_entity",
+        "decision",
+        "design_token",
+        "environment",
+        "epic",
+        "evaluation_case",
+        "event_contract",
+        "exclusion",
+        "feature",
+        "field_binding",
+        "hypothesis",
+        "idea",
+        "insight",
+        "integration",
+        "interaction",
+        "issue",
+        "metric",
+        "milestone",
+        "note",
+        "persona",
+        "problem",
+        "prompt",
+        "prompt_block",
+        "prompt_flow",
+        "prompt_variable",
+        "question",
+        "requirement",
+        "risk",
+        "screen",
+        "skill",
+        "source",
+        "task",
+        "test_case",
+        "threat",
+        "tool_definition",
+        "ui_state",
+        "user_flow",
+        "user_story",
+        "wireframe_component"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "scratch",
+        "proposed",
+        "in_review",
+        "approved",
+        "rejected",
+        "deprecated",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "updated_by": {
+      "type": "string"
+    },
+    "visibility": {
+      "default": "project",
+      "enum": [
+        "project",
+        "private",
+        "restricted"
+      ],
+      "type": "string"
+    },
+    "owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "sensitivity": {
+      "enum": [
+        "public",
+        "internal",
+        "confidential",
+        "secret-bearing"
+      ],
+      "type": "string",
+      "default": "internal"
+    },
+    "locked_fields": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "properties": {
+        "origin": {
+          "enum": [
+            "user_input",
+            "prompt_run",
+            "import",
+            "system",
+            "integration"
+          ],
+          "type": "string"
+        },
+        "run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prompt_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "skill_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_artifact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "origin"
+      ],
+      "type": "object"
+    },
+    "created_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "alias",
+    "project_id",
+    "type",
+    "schema_version",
+    "title",
+    "payload",
+    "status",
+    "revision",
+    "created_by",
+    "updated_by",
+    "provenance",
+    "created_at",
+    "updated_at"
+  ],
+  "title": "Artifact",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://promptstudio.app/schemas/artifact.schema.json",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "brief"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/brief.json",
+            "title": "brief payload",
+            "type": "object",
+            "required": [
+              "summary",
+              "raw_input"
+            ],
+            "properties": {
+              "summary": {},
+              "raw_input": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "idea"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/idea.json",
+            "title": "idea payload",
+            "type": "object",
+            "required": [
+              "content"
+            ],
+            "properties": {
+              "content": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "note"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/note.json",
+            "title": "note payload",
+            "type": "object",
+            "required": [
+              "content"
+            ],
+            "properties": {
+              "content": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "question"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/question.json",
+            "title": "question payload",
+            "type": "object",
+            "required": [
+              "question",
+              "blocking_level",
+              "owner"
+            ],
+            "properties": {
+              "question": {},
+              "blocking_level": {},
+              "owner": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "assumption"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/assumption.json",
+            "title": "assumption payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "confidence",
+              "validation_plan"
+            ],
+            "properties": {
+              "statement": {},
+              "confidence": {},
+              "validation_plan": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "hypothesis"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/hypothesis.json",
+            "title": "hypothesis payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "test"
+            ],
+            "properties": {
+              "statement": {},
+              "test": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "alternative"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/alternative.json",
+            "title": "alternative payload",
+            "type": "object",
+            "required": [
+              "option",
+              "pros",
+              "cons"
+            ],
+            "properties": {
+              "option": {},
+              "pros": {},
+              "cons": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "insight"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/insight.json",
+            "title": "insight payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "evidence"
+            ],
+            "properties": {
+              "statement": {},
+              "evidence": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "problem"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/problem.json",
+            "title": "problem payload",
+            "type": "object",
+            "required": [
+              "user",
+              "pain",
+              "context"
+            ],
+            "properties": {
+              "user": {},
+              "pain": {},
+              "context": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "persona"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/persona.json",
+            "title": "persona payload",
+            "type": "object",
+            "required": [
+              "name",
+              "goals",
+              "context"
+            ],
+            "properties": {
+              "name": {},
+              "goals": {},
+              "context": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "user_story"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/user_story.json",
+            "title": "user_story payload",
+            "type": "object",
+            "required": [
+              "as_a",
+              "i_want",
+              "so_that"
+            ],
+            "properties": {
+              "as_a": {},
+              "i_want": {},
+              "so_that": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "requirement"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/requirement.json",
+            "type": "object",
+            "required": [
+              "ears_pattern",
+              "clauses",
+              "priority",
+              "acceptance_criteria"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "ears_pattern": {
+                "enum": [
+                  "ubiquitous",
+                  "event_driven",
+                  "state_driven",
+                  "unwanted_behaviour",
+                  "optional_feature"
+                ]
+              },
+              "clauses": {
+                "type": "object",
+                "required": [
+                  "response"
+                ],
+                "properties": {
+                  "trigger": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "condition": {
+                    "type": "string"
+                  },
+                  "feature": {
+                    "type": "string"
+                  },
+                  "system": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string",
+                    "minLength": 5
+                  }
+                }
+              },
+              "priority": {
+                "enum": [
+                  "must",
+                  "should",
+                  "could",
+                  "wont"
+                ]
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "acceptance_criteria": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "given",
+                    "when",
+                    "then"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "given": {
+                      "type": "string"
+                    },
+                    "when": {
+                      "type": "string"
+                    },
+                    "then": {
+                      "type": "string"
+                    },
+                    "measurable_bound": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "exclusions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "waiver": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "approver": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "constraint"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/constraint.json",
+            "title": "constraint payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "kind"
+            ],
+            "properties": {
+              "statement": {},
+              "kind": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "feature"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/feature.json",
+            "title": "feature payload",
+            "type": "object",
+            "required": [
+              "name",
+              "outcome"
+            ],
+            "properties": {
+              "name": {},
+              "outcome": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "exclusion"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/exclusion.json",
+            "title": "exclusion payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "reason"
+            ],
+            "properties": {
+              "statement": {},
+              "reason": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "decision"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/decision.json",
+            "title": "decision payload",
+            "type": "object",
+            "required": [
+              "chosen_option",
+              "alternatives",
+              "rationale",
+              "consequences"
+            ],
+            "properties": {
+              "chosen_option": {},
+              "alternatives": {},
+              "rationale": {},
+              "consequences": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "adr"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/adr.json",
+            "title": "adr payload",
+            "type": "object",
+            "required": [
+              "context",
+              "decision",
+              "status",
+              "consequences"
+            ],
+            "properties": {
+              "context": {},
+              "decision": {},
+              "status": {},
+              "consequences": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "risk"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/risk.json",
+            "title": "risk payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "probability",
+              "impact",
+              "mitigation",
+              "owner"
+            ],
+            "properties": {
+              "statement": {},
+              "probability": {},
+              "impact": {},
+              "mitigation": {},
+              "owner": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "issue"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/issue.json",
+            "title": "issue payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "severity",
+              "owner"
+            ],
+            "properties": {
+              "statement": {},
+              "severity": {},
+              "owner": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "user_flow"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/user_flow.json",
+            "title": "user_flow payload",
+            "type": "object",
+            "required": [
+              "name",
+              "steps"
+            ],
+            "properties": {
+              "name": {},
+              "steps": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "screen"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/screen.json",
+            "title": "screen payload",
+            "type": "object",
+            "required": [
+              "name",
+              "route",
+              "purpose",
+              "regions",
+              "elements",
+              "states"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "route": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "purpose": {
+                "type": "string"
+              },
+              "viewport": {
+                "type": "object",
+                "properties": {
+                  "preset": {
+                    "enum": [
+                      "desktop",
+                      "tablet",
+                      "mobile"
+                    ]
+                  },
+                  "w": {
+                    "type": "integer"
+                  },
+                  "h": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "regions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "elements"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "elements": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "elements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "component"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "component": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "action": {
+                      "type": "string"
+                    },
+                    "validation": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "interactions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "trigger",
+                    "target",
+                    "effect"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "trigger": {
+                      "enum": [
+                        "click",
+                        "submit",
+                        "change",
+                        "blur",
+                        "key",
+                        "route",
+                        "async_done"
+                      ]
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string"
+                    },
+                    "on_success": {
+                      "type": "object"
+                    },
+                    "on_error": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "states": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "enum": [
+                    "empty",
+                    "loading",
+                    "populated",
+                    "editing",
+                    "invalid",
+                    "saving",
+                    "saved",
+                    "error",
+                    "permission_denied",
+                    "offline",
+                    "success"
+                  ]
+                }
+              },
+              "responsive": {
+                "type": "object"
+              },
+              "implements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "wireframe_component"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/wireframe_component.json",
+            "title": "wireframe_component payload",
+            "type": "object",
+            "required": [
+              "component",
+              "label"
+            ],
+            "properties": {
+              "component": {},
+              "label": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "interaction"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/interaction.json",
+            "title": "interaction payload",
+            "type": "object",
+            "required": [
+              "trigger",
+              "target",
+              "effect"
+            ],
+            "properties": {
+              "trigger": {},
+              "target": {},
+              "effect": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "ui_state"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/ui_state.json",
+            "title": "ui_state payload",
+            "type": "object",
+            "required": [
+              "name",
+              "entry_condition",
+              "display"
+            ],
+            "properties": {
+              "name": {},
+              "entry_condition": {},
+              "display": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "design_token"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/design_token.json",
+            "title": "design_token payload",
+            "type": "object",
+            "required": [
+              "name",
+              "value",
+              "type"
+            ],
+            "properties": {
+              "name": {},
+              "value": {},
+              "type": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "component_spec"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/component_spec.json",
+            "title": "component_spec payload",
+            "type": "object",
+            "required": [
+              "name",
+              "variants",
+              "usage"
+            ],
+            "properties": {
+              "name": {},
+              "variants": {},
+              "usage": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "accessibility_rule"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/accessibility_rule.json",
+            "title": "accessibility_rule payload",
+            "type": "object",
+            "required": [
+              "rule",
+              "wcag_ref"
+            ],
+            "properties": {
+              "rule": {},
+              "wcag_ref": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "component"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/component.json",
+            "title": "component payload",
+            "type": "object",
+            "required": [
+              "name",
+              "responsibility",
+              "interfaces"
+            ],
+            "properties": {
+              "name": {},
+              "responsibility": {},
+              "interfaces": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "data_entity"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/data_entity.json",
+            "title": "data_entity payload",
+            "type": "object",
+            "required": [
+              "name",
+              "fields",
+              "keys"
+            ],
+            "properties": {
+              "name": {},
+              "fields": {},
+              "keys": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "api_endpoint"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/api_endpoint.json",
+            "title": "api_endpoint payload",
+            "type": "object",
+            "required": [
+              "method",
+              "path",
+              "auth",
+              "request",
+              "response",
+              "errors"
+            ],
+            "properties": {
+              "method": {},
+              "path": {},
+              "auth": {},
+              "request": {},
+              "response": {},
+              "errors": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "event_contract"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/event_contract.json",
+            "title": "event_contract payload",
+            "type": "object",
+            "required": [
+              "name",
+              "schema",
+              "producer"
+            ],
+            "properties": {
+              "name": {},
+              "schema": {},
+              "producer": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "integration"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/integration.json",
+            "title": "integration payload",
+            "type": "object",
+            "required": [
+              "system",
+              "purpose",
+              "auth"
+            ],
+            "properties": {
+              "system": {},
+              "purpose": {},
+              "auth": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "environment"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/environment.json",
+            "title": "environment payload",
+            "type": "object",
+            "required": [
+              "name",
+              "commands"
+            ],
+            "properties": {
+              "name": {},
+              "commands": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "prompt"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/prompt.json",
+            "title": "prompt payload",
+            "type": "object",
+            "required": [
+              "name",
+              "blocks",
+              "output_contract"
+            ],
+            "properties": {
+              "name": {},
+              "blocks": {},
+              "output_contract": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "prompt_block"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/prompt_block.json",
+            "title": "prompt_block payload",
+            "type": "object",
+            "required": [
+              "block_type",
+              "content"
+            ],
+            "properties": {
+              "block_type": {},
+              "content": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "prompt_variable"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/prompt_variable.json",
+            "title": "prompt_variable payload",
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "secret"
+            ],
+            "properties": {
+              "name": {},
+              "type": {},
+              "secret": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "prompt_flow"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/prompt_flow.json",
+            "title": "prompt_flow payload",
+            "type": "object",
+            "required": [
+              "nodes",
+              "edges"
+            ],
+            "properties": {
+              "nodes": {},
+              "edges": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "field_binding"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/field_binding.json",
+            "title": "field_binding payload",
+            "type": "object",
+            "required": [
+              "target",
+              "prompt_version_id",
+              "context_rule",
+              "output_contract",
+              "policy"
+            ],
+            "properties": {
+              "target": {},
+              "prompt_version_id": {},
+              "context_rule": {},
+              "output_contract": {},
+              "policy": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "tool_definition"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/tool_definition.json",
+            "title": "tool_definition payload",
+            "type": "object",
+            "required": [
+              "name",
+              "input_schema",
+              "permission_class"
+            ],
+            "properties": {
+              "name": {},
+              "input_schema": {},
+              "permission_class": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "skill"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/skill.json",
+            "title": "skill payload",
+            "type": "object",
+            "required": [
+              "name",
+              "version",
+              "content_hash",
+              "trust"
+            ],
+            "properties": {
+              "name": {},
+              "version": {},
+              "content_hash": {},
+              "trust": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "test_case"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/test_case.json",
+            "title": "test_case payload",
+            "type": "object",
+            "required": [
+              "scenario",
+              "expected",
+              "linked_artifacts"
+            ],
+            "properties": {
+              "scenario": {},
+              "expected": {},
+              "linked_artifacts": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "evaluation_case"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/evaluation_case.json",
+            "title": "evaluation_case payload",
+            "type": "object",
+            "required": [
+              "input",
+              "expected_or_rubric"
+            ],
+            "properties": {
+              "input": {},
+              "expected_or_rubric": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "threat"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/threat.json",
+            "title": "threat payload",
+            "type": "object",
+            "required": [
+              "threat",
+              "asset",
+              "control"
+            ],
+            "properties": {
+              "threat": {},
+              "asset": {},
+              "control": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "metric"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/metric.json",
+            "title": "metric payload",
+            "type": "object",
+            "required": [
+              "name",
+              "definition",
+              "target"
+            ],
+            "properties": {
+              "name": {},
+              "definition": {},
+              "target": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "epic"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/epic.json",
+            "title": "epic payload",
+            "type": "object",
+            "required": [
+              "name",
+              "outcome"
+            ],
+            "properties": {
+              "name": {},
+              "outcome": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "task"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/task.json",
+            "title": "task payload",
+            "type": "object",
+            "required": [
+              "title",
+              "acceptance_criteria",
+              "depends_on"
+            ],
+            "properties": {
+              "title": {},
+              "acceptance_criteria": {},
+              "depends_on": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "milestone"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/milestone.json",
+            "title": "milestone payload",
+            "type": "object",
+            "required": [
+              "name",
+              "exit_criteria"
+            ],
+            "properties": {
+              "name": {},
+              "exit_criteria": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "source"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/source.json",
+            "title": "source payload",
+            "type": "object",
+            "required": [
+              "url_or_file",
+              "title",
+              "retrieved_at",
+              "trust_level"
+            ],
+            "properties": {
+              "url_or_file": {},
+              "title": {},
+              "retrieved_at": {},
+              "trust_level": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "attachment"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/attachment.json",
+            "title": "attachment payload",
+            "type": "object",
+            "required": [
+              "storage_key",
+              "mime",
+              "checksum"
+            ],
+            "properties": {
+              "storage_key": {},
+              "mime": {},
+              "checksum": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "claim"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://promptstudio.app/schemas/payloads/1.0.0/claim.json",
+            "title": "claim payload",
+            "type": "object",
+            "required": [
+              "statement",
+              "evidence_state"
+            ],
+            "properties": {
+              "statement": {},
+              "evidence_state": {}
+            }
+          }
+        }
+      }
+    }
+  ]
+}
