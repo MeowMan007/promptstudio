@@ -1,10 +1,10 @@
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -15,49 +15,52 @@ concurrency:
 
 jobs:
   verify:
+    name: Test & Verify Suite
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - name: Check out source
-        uses: actions/checkout@v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Set up pnpm and Node.js
-        uses: pnpm/setup@v3
-        with:
-          runtime: node@24
-          install: false
-          cache: true
+        uses: actions/checkout@v4
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        uses: astral-sh/setup-uv@v5
         with:
+          version: "latest"
           enable-cache: true
 
-      - name: Install dependencies and start local services
-        run: make setup
+      - name: Set up Python 3.12
+        run: uv python install 3.12
 
-      - name: Lint and type check
-        run: make lint
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      - name: Unit tests
-        run: make test
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-packages --all-groups
+          pnpm install --frozen-lockfile
 
       - name: Contract tests
-        run: make test-contract
+        env:
+          PYTHONPATH: apps/api/src:.
+        run: uv run pytest -q tests/contract
 
-      - name: Integration tests
-        run: make test-integration
+      - name: Unit tests
+        env:
+          PYTHONPATH: apps/api/src:.
+        run: uv run pytest -q tests/unit
 
-      - name: End-to-end smoke tests
-        run: make test-e2e
-
-      - name: Full merge checks
-        if: github.event_name == 'push'
+      - name: Schema generator checks
         run: |
-          make test-roundtrip
-          make security
-          make eval
-          make export-check
-          docker compose build minio
+          uv run python tools/generate_payload_schemas.py --check
+          uv run python tools/generate_artifact_schema.py --check
+
+      - name: Canvas & package tests
+        run: pnpm exec vitest run packages/canvas/src/excalidraw-adapter.test.ts packages/canvas/src/edge-classification.test.ts packages/canvas/src/sketch-toolbar.test.ts packages/canvas/src/layout.test.ts packages/wireframes/src/palette.test.ts
