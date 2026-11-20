@@ -406,3 +406,21 @@ async def execute_field_run(request: FieldRunApiRequest) -> FieldRunApiResponse:
         rationale=rationale,
         latency_ms=145,
     )
+
+
+@router.get("/templates")
+async def list_canonical_templates() -> list[dict[str, Any]]:
+    """List all 12 canonical project templates with architecture metadata."""
+    from prompt_studio_api.templates_registry import TEMPLATES_REGISTRY
+    return [t.to_dict() for t in TEMPLATES_REGISTRY]
+
+
+@router.get("/templates/{template_id}")
+async def get_canonical_template(template_id: str) -> dict[str, Any]:
+    """Get detailed metadata for a specific template."""
+    from fastapi import HTTPException
+    from prompt_studio_api.templates_registry import get_template
+    tpl = get_template(template_id)
+    if not tpl:
+        raise HTTPException(status_code=404, detail=f"Template '{template_id}' not found")
+    return tpl.to_dict()

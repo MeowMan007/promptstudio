@@ -435,14 +435,13 @@ TEMPLATES_HTML = f"""<!DOCTYPE html>
     <h1 class="page-title">Architecture Blueprints</h1>
     <p class="page-sub">Production-grade, battle-tested system templates ready to edit and export.</p>
     <div class="filter-bar">
-      <span class="filter-pill active">All</span>
-      <span class="filter-pill">SaaS</span>
-      <span class="filter-pill">Fintech</span>
-      <span class="filter-pill">Streaming</span>
-      <span class="filter-pill">E-commerce</span>
-      <span class="filter-pill">Developer Platform</span>
-      <span class="filter-pill">Healthcare</span>
-      <span class="filter-pill">Security</span>
+      <span class="filter-pill active" data-filter="all">All (12)</span>
+      <span class="filter-pill" data-filter="saas">SaaS &amp; Collab</span>
+      <span class="filter-pill" data-filter="fintech">Fintech &amp; Commerce</span>
+      <span class="filter-pill" data-filter="data">Data &amp; Streaming</span>
+      <span class="filter-pill" data-filter="dev">Developer Platform</span>
+      <span class="filter-pill" data-filter="security">Security &amp; Healthcare</span>
+      <span class="filter-pill" data-filter="ai">AI &amp; Agents</span>
     </div>
   </div>
 </div>
@@ -450,340 +449,340 @@ TEMPLATES_HTML = f"""<!DOCTYPE html>
 <div class="container">
   <div class="grid">
 
-    <!-- 1. B2B SaaS -->
     <div class="card" onclick="location.href='/board?template=b2b_saas'">
       <div class="card-preview">
-        <div class="cp-node">Cloudflare WAF</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">FastAPI Gateway</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Stripe Engine</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Postgres RLS</div>
+        <div class="cp-node">Traefik Gateway</div><div class="cp-node">OIDC SSO</div><div class="cp-node">Domain API</div><div class="cp-node">PostgreSQL RLS</div><div class="cp-node">Stripe Billing</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">B2B Multi-Tenant Enterprise SaaS</div>
-          <div class="card-badge">Enterprise</div>
+          <div class="card-title">B2B Multi-Tenant SaaS</div>
+          <span class="card-badge">Core SaaS</span>
         </div>
-        <div class="card-desc">Multi-tenant architecture with PostgreSQL Row-Level Security, Stripe Customer Portal, webhook HMAC idempotency, and ClickHouse audit ledger.</div>
+        <div class="card-desc">Multi-tenant application architecture with tenant-scoped identity, PostgreSQL Row-Level Security (RLS) data isolation, subscription lifecycle, and asynchronous background worker queues.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Traefik Gateway</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">OIDC / SAML SSO</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">PostgreSQL RLS</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Stripe Billing</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">BullMQ</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Tenant context resolution at API gateway</li><li style="margin-bottom:3px;">PostgreSQL Row-Level Security (RLS) tenant isolation</li><li style="margin-bottom:3px;">Subscription tier & feature entitlement enforcement</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>99.99%</strong> SLA</span>
-          <span><strong>50k</strong> RPS</span>
-          <span><strong>SOC 2</strong> Type II</span>
+          <span>Complexity: <strong>Intermediate</strong></span>
+          <span>Target: <strong>B2B SaaS Engineering Teams</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">14 nodes &bull; 4 ERDs &bull; 2 ADRs &bull; Attached UI Spec</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 2. Fintech Ledger -->
+
     <div class="card" onclick="location.href='/board?template=fintech_ledger'">
       <div class="card-preview">
-        <div class="cp-node">Payment Processor</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Double-Entry Core</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Temporal Reconciler</div>
+        <div class="cp-node">Multi-Rail Ingress</div><div class="cp-node">Fraud Scorer</div><div class="cp-node">Double-Entry Ledger</div><div class="cp-node">3-Way Recon</div><div class="cp-node">KMS Vault</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Fintech Double-Entry Ledger System</div>
-          <div class="card-badge">Enterprise</div>
+          <div class="card-title">Fintech Payment Gateway & Double-Entry Ledger</div>
+          <span class="card-badge">Fintech & Banking</span>
         </div>
-        <div class="card-desc">Immutable double-entry accounting ledger with idempotent payment pipelines, fraud scoring, PCI-DSS Level 1 compliance, and automated reconciliation.</div>
+        <div class="card-desc">Payment orchestration and merchant ledger platform featuring immutable double-entry journal entries, multi-rail gateway routing, three-way reconciliation, and tokenised cardholder data boundaries.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Multi-Rail Gateway</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Double-Entry Engine</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">3-Way Reconciliation</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Tokenised CDE Vault</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Immutable double-entry ledger with debit/credit balance invariants</li><li style="margin-bottom:3px;">Idempotency keys and distributed state machine for payments</li><li style="margin-bottom:3px;">Automated 3-way reconciliation (gateway, processor, internal ledger)</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>PCI-DSS</strong> L1</span>
-          <span><strong>10k</strong> TPS</span>
-          <span><strong>99.999%</strong> SLA</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>Fintech Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">14 nodes &bull; 5 ERDs &bull; 4 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 3. Event Streaming -->
+
     <div class="card" onclick="location.href='/board?template=event_streaming'">
       <div class="card-preview">
-        <div class="cp-node">Kafka Cluster</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Avro Registry</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Flink Stream</div>
+        <div class="cp-node">Vector Agent</div><div class="cp-node">Kafka Cluster</div><div class="cp-node">Flink Stream Engine</div><div class="cp-node">ClickHouse OLAP</div><div class="cp-node">DLQ Replay</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Event Streaming Pipeline (Kafka &amp; Flink)</div>
-          <div class="card-badge">Advanced</div>
+          <div class="card-title">Real-Time Event Streaming & Analytics</div>
+          <span class="card-badge">Data & Streaming</span>
         </div>
-        <div class="card-desc">High-throughput Kafka streaming backbone with Confluent Schema Registry, Apache Flink stateful stream processing, and dead-letter queue recovery.</div>
+        <div class="card-desc">High-volume operational telemetry platform with partition-keyed event ingestion, schema registry governance, stream processing, and dead-letter queue recovery.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Apache Kafka</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Apache Flink</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Schema Registry</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">ClickHouse OLAP</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Vector / Fluent</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Schema evolution governance with backward compatibility validation</li><li style="margin-bottom:3px;">Tumbling and sliding window stream aggregations</li><li style="margin-bottom:3px;">Partition-keyed ordering semantics and consumer group lag monitoring</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>500k</strong> events/s</span>
-          <span><strong>&lt;20ms</strong> p99</span>
-          <span><strong>7-day</strong> retention</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>Data Platform Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 3 ERDs &bull; 3 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 4. E-commerce Marketplace -->
+
     <div class="card" onclick="location.href='/board?template=ecommerce_marketplace'">
       <div class="card-preview">
-        <div class="cp-node">Search Elastic</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Cart Redis</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Inventory Lock</div>
+        <div class="cp-node">Storefront CDN</div><div class="cp-node">Order Orchestrator</div><div class="cp-node">Inventory Lock</div><div class="cp-node">Split Payout Engine</div><div class="cp-node">Seller Ledger</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">E-commerce Multi-Vendor Marketplace</div>
-          <div class="card-badge">Advanced</div>
+          <div class="card-title">Multi-Vendor Marketplace & Seller Payouts</div>
+          <span class="card-badge">E-Commerce</span>
         </div>
-        <div class="card-desc">High-concurrency storefront with Elasticsearch catalog search, distributed Redis inventory reservation locks, split payouts, and fulfillment routing.</div>
+        <div class="card-desc">Multi-vendor commercial platform supporting catalogue management, multi-seller cart order splits, escrow-like hold-and-release payouts, and seller verification.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Algolia Search</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Redis Inventory Locks</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Order Orchestrator</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Split Transfers</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Seller Portal</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Two-phase stock reservation with automatic expiry</li><li style="margin-bottom:3px;">Multi-seller order splitting with independent fulfillment tracks</li><li style="margin-bottom:3px;">Direct and transfer payment routing with platform fee splits</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>100k</strong> RPS</span>
-          <span><strong>Black Friday</strong> scale</span>
-          <span><strong>GDPR</strong> compliant</span>
+          <span>Complexity: <strong>Intermediate</strong></span>
+          <span>Target: <strong>Marketplace Platform Teams</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">14 nodes &bull; 5 ERDs &bull; 3 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 5. Developer Platform -->
+
     <div class="card" onclick="location.href='/board?template=developer_platform'">
       <div class="card-preview">
-        <div class="cp-node">OAuth2 Server</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">GraphQL Gateway</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Sandbox Exec</div>
+        <div class="cp-node">Kong Gateway</div><div class="cp-node">Redis Rate Limiter</div><div class="cp-node">Webhook Dispatcher</div><div class="cp-node">OpenAPI Docs</div><div class="cp-node">Event Store</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Developer Platform &amp; Public API</div>
-          <div class="card-badge">Advanced</div>
+          <div class="card-title">Developer API & Webhook Platform</div>
+          <span class="card-badge">Developer Tools</span>
         </div>
-        <div class="card-desc">Public developer ecosystem with API-key management, OAuth2 token rotation, rate-quota buckets, GraphQL federation gateway, and webhook fan-out.</div>
+        <div class="card-desc">Public API infrastructure featuring tiered token-bucket rate limiting, scoped API key rotation, interactive documentation, and reliable HMAC-signed webhook delivery.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Kong Gateway</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Redis Token Bucket</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">OpenAPI 3.1</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Webhook Dispatcher</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Developer Portal</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Tiered rate limiting with sliding-window counters in Redis</li><li style="margin-bottom:3px;">Scoped API key generation, hashing (SHA-256), and graceful rotation</li><li style="margin-bottom:3px;">Webhook delivery with exponential backoff, HMAC-SHA256 signing, and DLQ</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>OpenAPI</strong> 3.1</span>
-          <span><strong>5 SDKs</strong> supported</span>
-          <span><strong>99.9%</strong> uptime</span>
+          <span>Complexity: <strong>Intermediate</strong></span>
+          <span>Target: <strong>Developer Experience Teams</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">12 nodes &bull; 4 ERDs &bull; 3 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 6. Collaborative Workspace -->
+
     <div class="card" onclick="location.href='/board?template=collab_workspace'">
       <div class="card-preview">
-        <div class="cp-node">CRDT Engine</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">WebSocket Hub</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Doc Store</div>
+        <div class="cp-node">WebSocket Gateway</div><div class="cp-node">Yjs Sync Server</div><div class="cp-node">Redis Awareness</div><div class="cp-node">Doc Store</div><div class="cp-node">Snapshot Worker</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Collaborative Real-time Workspace</div>
-          <div class="card-badge">Advanced</div>
+          <div class="card-title">Collaborative Document & Canvas Workspace</div>
+          <span class="card-badge">Productivity & Collaboration</span>
         </div>
-        <div class="card-desc">CRDT operational transformation engine with real-time WebSocket cursor presence, snapshot compaction, and conflict-free multi-user document sync.</div>
+        <div class="card-desc">Multi-user real-time workspace featuring conflict-free replicated data types (CRDTs), ephemeral presence awareness, document snapshots, and workspace permissions.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Yjs CRDT</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">WebSocket Sync</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Redis Pub/Sub</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Presence Awareness</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">PostgreSQL Doc Store</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Yjs CRDT synchronization for conflict-free concurrent editing</li><li style="margin-bottom:3px;">Ephemeral cursor positions and presence awareness via Redis Pub/Sub</li><li style="margin-bottom:3px;">Offline edit queuing and automatic reconciliation upon reconnect</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>500</strong> concurrent/doc</span>
-          <span><strong>&lt;50ms</strong> sync</span>
-          <span><strong>Offline</strong> first</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>Collaboration Tool Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">11 nodes &bull; 3 ERDs &bull; 3 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 7. Healthcare Portal -->
+
     <div class="card" onclick="location.href='/board?template=healthcare_portal'">
       <div class="card-preview">
-        <div class="cp-node">FHIR R4 Gateway</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">HL7 Pipeline</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">PHI Vault</div>
+        <div class="cp-node">SMART Ingress</div><div class="cp-node">FHIR R4 Gateway</div><div class="cp-node">PHI Guardrail</div><div class="cp-node">HL7 Listener</div><div class="cp-node">Encrypted Clinical DB</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Healthcare Patient Portal (HIPAA / FHIR)</div>
-          <div class="card-badge">Enterprise</div>
+          <div class="card-title">Healthcare Patient Portal & FHIR Integration</div>
+          <span class="card-badge">Healthcare & Life Sciences</span>
         </div>
-        <div class="card-desc">HIPAA-compliant clinical platform with FHIR R4 interoperability, HL7 message pipeline, field-level PHI encryption at rest, and patient consent audit.</div>
+        <div class="card-desc">Patient engagement portal designed for interoperability with electronic health record (EHR) systems via HL7 FHIR R4 APIs, featuring attribute-based access and audit logging.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">FHIR R4 REST API</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">SMART on FHIR</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">PHI Access Control</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">HL7 v2 ADT</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Encrypted Store</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">HL7 FHIR R4 standard resource models (Patient, Observation, Encounter)</li><li style="margin-bottom:3px;">SMART on FHIR OAuth 2.0 authorization and clinical launch workflows</li><li style="margin-bottom:3px;">Patient consent verification and field-level sensitive data masking</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>HIPAA</strong> certified</span>
-          <span><strong>FHIR</strong> R4</span>
-          <span><strong>AES-256</strong> PHI</span>
+          <span>Complexity: <strong>Specialized</strong></span>
+          <span>Target: <strong>HealthTech Architects</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 4 ERDs &bull; 4 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 8. Zero-Trust IAM -->
+
     <div class="card" onclick="location.href='/board?template=zero_trust_iam'">
       <div class="card-preview">
-        <div class="cp-node">mTLS Envoy</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">SPIFFE / SPIRE</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">OPA Policy</div>
+        <div class="cp-node">IdP Federation</div><div class="cp-node">SCIM Provisioner</div><div class="cp-node">OPA Policy Engine</div><div class="cp-node">Device Posture</div><div class="cp-node">SPIFFE CA</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Zero-Trust IAM &amp; Micro-Segmentation</div>
-          <div class="card-badge">Enterprise</div>
+          <div class="card-title">Zero-Trust Identity & Access Management</div>
+          <span class="card-badge">Security & Identity</span>
         </div>
-        <div class="card-desc">NIST 800-207 zero-trust architecture with SPIFFE workload identity issuance, OPA policy enforcement point, HashiCorp Vault secrets, and mutual TLS.</div>
+        <div class="card-desc">Enterprise identity governance framework enforcing continuous verification, Open Policy Agent (OPA) fine-grained authorization, device posture scoring, and ephemeral credentials.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">OpenID Connect</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">SCIM 2.0</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">OPA Rego Policy</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Device Posture</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">SPIFFE / SPIRE</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Continuous trust evaluation combining user identity, device posture, and context</li><li style="margin-bottom:3px;">Declarative policy decision point (PDP) using Open Policy Agent (OPA)</li><li style="margin-bottom:3px;">Automated SCIM 2.0 provisioning and instant multi-system de-provisioning</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>NIST</strong> 800-207</span>
-          <span><strong>FedRAMP</strong> ready</span>
-          <span><strong>SOC 2</strong> compliant</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>Identity Architects</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">14 nodes &bull; 4 ERDs &bull; 4 ADRs</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 9. AI Agent & Enterprise RAG -->
+
     <div class="card" onclick="location.href='/board?template=ai_agent_rag'">
       <div class="card-preview">
-        <div class="cp-node">Semantic Cache</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Hybrid RAG</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">In-Vector ACL</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">gVisor Sandbox</div>
+        <div class="cp-node">Ingestion Pipeline</div><div class="cp-node">Qdrant Vector DB</div><div class="cp-node">LangGraph Agent</div><div class="cp-node">Guardrails Gateway</div><div class="cp-node">Trace Store</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Autonomous AI Agent &amp; Enterprise RAG</div>
-          <div class="card-badge">AI Native</div>
+          <div class="card-title">Enterprise AI Agent & RAG Platform</div>
+          <span class="card-badge">AI & Agents</span>
         </div>
-        <div class="card-desc">Production zero-trust agentic pipeline with hybrid dense/sparse vector search, in-vector tenant ACL filtering, isolated tool sandbox, and audit logging.</div>
+        <div class="card-desc">Autonomous agent and retrieval-augmented generation platform with pre-retrieval document ACL filtering, semantic vector search, tool guardrails, and execution auditing.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Qdrant Vector DB</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Hybrid Search</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">LangGraph Agent</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Guardrails AI</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Trace Log</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Tenant and document ACL enforcement prior to model context assembly</li><li style="margin-bottom:3px;">Hybrid lexical and vector semantic retrieval with cross-encoder reranking</li><li style="margin-bottom:3px;">Autonomous multi-step agent orchestrator with human-in-the-loop approvals</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>In-Vector</strong> ACL</span>
-          <span><strong>&lt;15ms</strong> Cache Hit</span>
-          <span><strong>Zero-Trust</strong> Sandbox</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>AI Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 3 ERDs &bull; 4 ADRs &bull; Attached UI Spec</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 10. Global Payroll & Tax Engine -->
+
     <div class="card" onclick="location.href='/board?template=global_payroll'">
       <div class="card-preview">
-        <div class="cp-node">Bi-Temporal DB</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Gross-to-Net DAG</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Tax Rules</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">ACH / SEPA</div>
+        <div class="cp-node">Payroll Ingress</div><div class="cp-node">Rule Pack Engine</div><div class="cp-node">Gross-to-Net Runner</div><div class="cp-node">Disbursement Batch</div><div class="cp-node">GL Export</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Multi-Jurisdiction Global Payroll &amp; Tax</div>
-          <div class="card-badge">Fintech</div>
+          <div class="card-title">Global Payroll & Tax Engine</div>
+          <span class="card-badge">Fintech & Payroll</span>
         </div>
-        <div class="card-desc">Deterministic payroll execution with effective-dated compensation, statutory tax brackets, retroactive adjustment reconciliations, and dual-auth disbursement.</div>
+        <div class="card-desc">Deterministic gross-to-net payroll engine supporting versioned jurisdiction rule packs, multi-currency processing, effective-dated contracts, and statutory remittance.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Gross-to-Net Engine</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Versioned Rule Packs</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Effective Dating</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">SEPA / ACH Disburse</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Statutory Audit</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Deterministic calculation pipeline with immutable run snapshots</li><li style="margin-bottom:3px;">Effective-dated jurisdiction tax rules and localized deduction schedules</li><li style="margin-bottom:3px;">Pre-flight payroll preview and anomaly detection exception queue</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>Bi-temporal</strong> Audit</span>
-          <span><strong>100%</strong> Deterministic</span>
-          <span><strong>NACHA / SEPA</strong></span>
+          <span>Complexity: <strong>Specialized</strong></span>
+          <span>Target: <strong>Payroll Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 3 ERDs &bull; 4 ADRs &bull; Attached UI Spec</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 11. LegalTech CLM & Ethical Walls -->
+
     <div class="card" onclick="location.href='/board?template=legaltech_clm'">
       <div class="card-preview">
-        <div class="cp-node">Ethical Wall ABAC</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Redline Engine</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">DocuSign HMAC</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">WORM Store</div>
+        <div class="cp-node">Contract Intake</div><div class="cp-node">Clause Library</div><div class="cp-node">Redline Engine</div><div class="cp-node">Ethical Wall Gate</div><div class="cp-node">Signature Vault</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">LegalTech CLM, Redlines &amp; Ethical Walls</div>
-          <div class="card-badge">Compliance</div>
+          <div class="card-title">LegalTech Contract Lifecycle Management</div>
+          <span class="card-badge">LegalTech & Enterprise</span>
         </div>
-        <div class="card-desc">High-assurance contract lifecycle system with strict conflict-of-interest ethical walls, tamper-evident redlining, electronic signature flows, and court docketing.</div>
+        <div class="card-desc">Enterprise contract management platform covering clause assembly, tracked redlining, multi-tier approval routing, ethical walls, and e-signature envelope tracking.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Clause Library</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Diff / Redline Engine</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Ethical Walls</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">DocuSign Adapter</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Obligations Tracker</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">Approved clause library assembly with deviation risk scoring</li><li style="margin-bottom:3px;">Side-by-side version comparison and tracked change redline engine</li><li style="margin-bottom:3px;">Ethical wall conflict-of-interest access boundaries between business units</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>Zero-Leak</strong> Walls</span>
-          <span><strong>WORM</strong> Storage</span>
-          <span><strong>SHA-256</strong> Diff</span>
+          <span>Complexity: <strong>Intermediate</strong></span>
+          <span>Target: <strong>Legal Operations Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 3 ERDs &bull; 4 ADRs &bull; Attached UI Spec</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
 
-    <!-- 12. Global Freight Logistics & Cold-Chain IoT -->
+
     <div class="card" onclick="location.href='/board?template=logistics_supply_chain'">
       <div class="card-preview">
-        <div class="cp-node">MQTT Broker</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Geofence Billing</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">EDI 204/214</div>
-        <div class="cp-edge"></div>
-        <div class="cp-node">Chain of Custody</div>
+        <div class="cp-node">EMQX Broker</div><div class="cp-node">TimescaleDB</div><div class="cp-node">Geofence Engine</div><div class="cp-node">EDI X12 Translator</div><div class="cp-node">POD Signer</div>
       </div>
       <div class="card-body">
         <div class="card-top">
-          <div class="card-title">Global Freight Logistics &amp; Cold-Chain IoT</div>
-          <div class="card-badge">Logistics</div>
+          <div class="card-title">Logistics & Cold-Chain Supply Chain Platform</div>
+          <span class="card-badge">Supply Chain & IoT</span>
         </div>
-        <div class="card-desc">Multi-modal supply chain control tower with real-time MQTT temperature ingestion, geofenced detention billing, EDI X12 feeds, and tamper-evident proof-of-delivery.</div>
+        <div class="card-desc">Global freight visibility platform tracking multi-modal shipments, IoT sensor cold-chain temperature telemetry, EDI X12 transaction sets, and cryptographic proof-of-delivery.</div>
+        <div style="margin: 6px 0;">
+          <span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">EMQX MQTT</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">TimescaleDB</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">EDI X12 Engine</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Geofencing</span><span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#f1f5f9;color:#475569;margin-right:4px;margin-bottom:4px;">Ed25519 Cryptographic POD</span>
+        </div>
+        <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;margin:4px 0 8px;">
+          <li style="margin-bottom:3px;">MQTT telematics ingestion with local offline excursion alarms on device</li><li style="margin-bottom:3px;">TimescaleDB hypertable storage for time-series temperature readings</li><li style="margin-bottom:3px;">Polygon geofence entry/exit detection and automated shipment milestone advance</li>
+        </ul>
         <div class="card-meta">
-          <span><strong>Real-time</strong> MQTT</span>
-          <span><strong>Sub-meter</strong> Geofence</span>
-          <span><strong>EDI X12</strong> 204/214</span>
+          <span>Complexity: <strong>Advanced</strong></span>
+          <span>Target: <strong>Logistics Engineers</strong></span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="card-footer-text">13 nodes &bull; 3 ERDs &bull; 4 ADRs &bull; Attached UI Spec</span>
+        <span class="card-footer-text">Includes architecture, wireframes, ERD &amp; delivery tasks</span>
         <span class="card-open">Open Blueprint &rarr;</span>
       </div>
     </div>
-
 
   </div>
 </div>
@@ -793,6 +792,18 @@ TEMPLATES_HTML = f"""<!DOCTYPE html>
     p.addEventListener('click', () => {{
       document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('active'));
       p.classList.add('active');
+      const f = p.getAttribute('data-filter') || 'all';
+      document.querySelectorAll('.card').forEach(card => {{
+        const href = card.getAttribute('onclick') || '';
+        let show = (f === 'all');
+        if (f === 'saas' && (href.includes('b2b_saas') || href.includes('collab_workspace') || href.includes('legaltech_clm'))) show = true;
+        if (f === 'fintech' && (href.includes('fintech_ledger') || href.includes('ecommerce_marketplace') || href.includes('global_payroll'))) show = true;
+        if (f === 'data' && (href.includes('event_streaming') || href.includes('logistics_supply_chain'))) show = true;
+        if (f === 'dev' && href.includes('developer_platform')) show = true;
+        if (f === 'security' && (href.includes('zero_trust_iam') || href.includes('healthcare_portal'))) show = true;
+        if (f === 'ai' && href.includes('ai_agent_rag')) show = true;
+        card.style.display = show ? 'flex' : 'none';
+      }});
     }});
   }});
 </script>

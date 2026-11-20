@@ -2292,309 +2292,263 @@ STUDIO_HTML = r"""<!DOCTYPE html>
           <div class="template-filter-pill" onclick="setTemplateFilter('saas', this)">Core SaaS &amp; B2B</div>
           <div class="template-filter-pill" onclick="setTemplateFilter('fintech', this)">Fintech &amp; Commerce</div>
           <div class="template-filter-pill" onclick="setTemplateFilter('data', this)">Data &amp; Streaming</div>
-          <div class="template-filter-pill" onclick="setTemplateFilter('devtools', this)">DevTools &amp; API</div>
+          <div class="template-filter-pill" onclick="setTemplateFilter('dev', this)">DevTools &amp; API</div>
           <div class="template-filter-pill" onclick="setTemplateFilter('security', this)">Security &amp; Healthcare</div>
         </div>
       </div>
 
       <div class="template-modal-content" id="template-cards-container">
-        <!-- 1. B2B Multi-Tenant SaaS -->
-        <div class="template-card" data-cat="saas" data-keywords="b2b multi-tenant stripe billing auth0 rbac postgres rls isolation">
+
+        <div class="template-card" data-cat="saas" data-keywords="b2b_saas saas traefik gateway oidc / saml sso postgresql rls stripe billing bullmq b2b multi-tenant saas">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-b2b">Core SaaS</span>
-              <span class="template-spec-pill">4 Zones &middot; 8 Nodes &middot; 4 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-saas">Core SaaS</span>
+              <span class="template-spec-pill">Intermediate &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">B2B Multi-Tenant SaaS with Stripe Billing &amp; PostgreSQL RLS</div>
-            <div class="template-card-desc">Production multi-tenant architecture with OIDC/SAML authentication, PostgreSQL Row-Level Security (RLS) data isolation, BullMQ job queues, and Stripe Customer Portal subscription management.</div>
+            <div class="template-card-title" style="margin-top: 6px;">B2B Multi-Tenant SaaS</div>
+            <div class="template-card-desc">Multi-tenant application architecture with tenant-scoped identity, PostgreSQL Row-Level Security (RLS) data isolation, subscription lifecycle, and asynchronous background worker queues.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Traefik Gateway</span>
-              <span class="template-tech-tag">Auth0 OIDC</span>
-              <span class="template-tech-tag">PostgreSQL RLS</span>
-              <span class="template-tech-tag">Stripe Billing</span>
-              <span class="template-tech-tag">BullMQ</span>
+              <span class="template-tech-tag">Traefik Gateway</span><span class="template-tech-tag">OIDC / SAML SSO</span><span class="template-tech-tag">PostgreSQL RLS</span><span class="template-tech-tag">Stripe Billing</span><span class="template-tech-tag">BullMQ</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('b2b_saas', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('b2b_saas', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('b2b_saas', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 2. Fintech Payment Gateway & Double-Entry Ledger -->
-        <div class="template-card" data-cat="fintech" data-keywords="fintech ledger payment gateway pci dss double entry reconciliation stripe">
+
+        <div class="template-card" data-cat="fintech" data-keywords="fintech_ledger fintech multi-rail gateway double-entry engine 3-way reconciliation tokenised cde vault fintech payment gateway & double-entry ledger">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-fintech">Fintech</span>
-              <span class="template-spec-pill">4 Zones &middot; 8 Nodes &middot; 4 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-fintech">Fintech & Banking</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Fintech Payment Gateway &amp; Double-Entry Ledger Platform</div>
-            <div class="template-card-desc">PCI-DSS compliant payment processing engine with immutable double-entry bookkeeping (Debit = Credit invariant), multi-acquirer smart routing, idempotency locks, and automated daily reconciliation.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Fintech Payment Gateway & Double-Entry Ledger</div>
+            <div class="template-card-desc">Payment orchestration and merchant ledger platform featuring immutable double-entry journal entries, multi-rail gateway routing, three-way reconciliation, and tokenised cardholder data boundaries.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">PCI Vault</span>
-              <span class="template-tech-tag">Double-Entry</span>
-              <span class="template-tech-tag">Redlock Idempotency</span>
-              <span class="template-tech-tag">ACH / FedNow</span>
-              <span class="template-tech-tag">PostgreSQL ACID</span>
+              <span class="template-tech-tag">Multi-Rail Gateway</span><span class="template-tech-tag">Double-Entry Engine</span><span class="template-tech-tag">3-Way Reconciliation</span><span class="template-tech-tag">Tokenised CDE Vault</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('fintech_ledger', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('fintech_ledger', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('fintech_ledger', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 3. High-Throughput Event Streaming & Telemetry -->
-        <div class="template-card" data-cat="data" data-keywords="event streaming kafka flink clickhouse analytics telemetry high throughput">
+
+        <div class="template-card" data-cat="data" data-keywords="event_streaming data apache kafka apache flink schema registry clickhouse olap vector / fluent real-time event streaming & analytics">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-data">Data &amp; Streaming</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-data">Data & Streaming</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">High-Throughput Telemetry &amp; Real-Time Analytics Platform</div>
-            <div class="template-card-desc">Distributed event ingestion handling 100k+ events/sec using 64-partition Apache Kafka cluster, Apache Flink sliding window aggregation, ClickHouse columnar OLAP, and real-time KPI dashboard.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Real-Time Event Streaming & Analytics</div>
+            <div class="template-card-desc">High-volume operational telemetry platform with partition-keyed event ingestion, schema registry governance, stream processing, and dead-letter queue recovery.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Apache Kafka</span>
-              <span class="template-tech-tag">Apache Flink</span>
-              <span class="template-tech-tag">ClickHouse OLAP</span>
-              <span class="template-tech-tag">Parquet Storage</span>
-              <span class="template-tech-tag">Grafana</span>
+              <span class="template-tech-tag">Apache Kafka</span><span class="template-tech-tag">Apache Flink</span><span class="template-tech-tag">Schema Registry</span><span class="template-tech-tag">ClickHouse OLAP</span><span class="template-tech-tag">Vector / Fluent</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('event_streaming', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('event_streaming', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('event_streaming', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 4. Global Multi-Vendor Marketplace & Escrow -->
-        <div class="template-card" data-cat="fintech" data-keywords="marketplace ecommerce multi vendor escrow stripe connect inventory elasticsearch">
+
+        <div class="template-card" data-cat="ecommerce" data-keywords="ecommerce_marketplace ecommerce algolia search redis inventory locks order orchestrator split transfers seller portal multi-vendor marketplace & seller payouts">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-fintech">Commerce</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 4 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-ecommerce">E-Commerce</span>
+              <span class="template-spec-pill">Intermediate &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Global Multi-Vendor Marketplace &amp; Escrow Platform</div>
-            <div class="template-card-desc">Buyer and merchant marketplace with Apollo GraphQL Federation, Elasticsearch catalog discovery, distributed Redis inventory reservation locks, and Stripe Connect automated split payouts.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Multi-Vendor Marketplace & Seller Payouts</div>
+            <div class="template-card-desc">Multi-vendor commercial platform supporting catalogue management, multi-seller cart order splits, escrow-like hold-and-release payouts, and seller verification.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">GraphQL Mesh</span>
-              <span class="template-tech-tag">Elasticsearch</span>
-              <span class="template-tech-tag">Redis Redlock</span>
-              <span class="template-tech-tag">Stripe Connect</span>
-              <span class="template-tech-tag">PostgreSQL Replicas</span>
+              <span class="template-tech-tag">Algolia Search</span><span class="template-tech-tag">Redis Inventory Locks</span><span class="template-tech-tag">Order Orchestrator</span><span class="template-tech-tag">Split Transfers</span><span class="template-tech-tag">Seller Portal</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('ecommerce_marketplace', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('ecommerce_marketplace', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('ecommerce_marketplace', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 5. Developer API Platform & Webhooks -->
-        <div class="template-card" data-cat="devtools" data-keywords="developer api gateway webhooks hmac svix kong rate limiting sdk">
+
+        <div class="template-card" data-cat="dev" data-keywords="developer_platform dev kong gateway redis token bucket openapi 3.1 webhook dispatcher developer portal developer api & webhook platform">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-b2b">DevTools</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-dev">Developer Tools</span>
+              <span class="template-spec-pill">Intermediate &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Developer API Platform &amp; Reliable Webhook Delivery Engine</div>
-            <div class="template-card-desc">Public developer infrastructure with Kong API Gateway, SHA-256 API key hashing, token-bucket rate limiting (100 RPS), Svix outbound webhook engine with HMAC signatures, and automated retries.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Developer API & Webhook Platform</div>
+            <div class="template-card-desc">Public API infrastructure featuring tiered token-bucket rate limiting, scoped API key rotation, interactive documentation, and reliable HMAC-signed webhook delivery.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Kong Gateway</span>
-              <span class="template-tech-tag">HMAC-SHA256</span>
-              <span class="template-tech-tag">Svix Webhooks</span>
-              <span class="template-tech-tag">Token-Bucket Rate</span>
-              <span class="template-tech-tag">OpenAPI 3.1</span>
+              <span class="template-tech-tag">Kong Gateway</span><span class="template-tech-tag">Redis Token Bucket</span><span class="template-tech-tag">OpenAPI 3.1</span><span class="template-tech-tag">Webhook Dispatcher</span><span class="template-tech-tag">Developer Portal</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('developer_platform', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('developer_platform', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('developer_platform', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 6. Real-Time Collaborative Workspace (Miro/Figma Architecture) -->
-        <div class="template-card" data-cat="saas" data-keywords="realtime collaboration websocket crdt yjs figma miro presence canvas">
+
+        <div class="template-card" data-cat="saas" data-keywords="collab_workspace saas yjs crdt websocket sync redis pub/sub presence awareness postgresql doc store collaborative document & canvas workspace">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-realtime">Real-Time</span>
-              <span class="template-spec-pill">4 Zones &middot; 6 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-saas">Productivity & Collaboration</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Real-Time Collaborative Document &amp; Canvas Engine</div>
-            <div class="template-card-desc">Miro/Figma-style collaborative canvas powered by WebSocket duplex gateways, Redis Pub/Sub cursor presence, Conflict-Free Replicated Data Types (CRDT Yjs), and immutable S3 document snapshots.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Collaborative Document & Canvas Workspace</div>
+            <div class="template-card-desc">Multi-user real-time workspace featuring conflict-free replicated data types (CRDTs), ephemeral presence awareness, document snapshots, and workspace permissions.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">WebSocket Hub</span>
-              <span class="template-tech-tag">CRDT Yjs</span>
-              <span class="template-tech-tag">Redis Pub/Sub</span>
-              <span class="template-tech-tag">S3 Snapshots</span>
-              <span class="template-tech-tag">PostgreSQL ACL</span>
+              <span class="template-tech-tag">Yjs CRDT</span><span class="template-tech-tag">WebSocket Sync</span><span class="template-tech-tag">Redis Pub/Sub</span><span class="template-tech-tag">Presence Awareness</span><span class="template-tech-tag">PostgreSQL Doc Store</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('collab_workspace', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('collab_workspace', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('collab_workspace', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 7. Healthcare HIPAA Patient Portal & FHIR EHR -->
-        <div class="template-card" data-cat="security" data-keywords="healthcare hipaa patient portal fhir ehr kms phi encryption mtls audit">
+
+        <div class="template-card" data-cat="health" data-keywords="healthcare_portal health fhir r4 rest api smart on fhir phi access control hl7 v2 adt encrypted store healthcare patient portal & fhir integration">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-data">Security &amp; Healthcare</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-health">Healthcare & Life Sciences</span>
+              <span class="template-spec-pill">Specialized &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Healthcare HIPAA Patient Portal &amp; FHIR EHR Gateway</div>
-            <div class="template-card-desc">HIPAA Security Rule compliant healthcare platform with mTLS edge protection, HL7 FHIR R4 clinical APIs, AWS KMS envelope-encrypted Protected Health Information (PHI), and immutable audit logs.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Healthcare Patient Portal & FHIR Integration</div>
+            <div class="template-card-desc">Patient engagement portal designed for interoperability with electronic health record (EHR) systems via HL7 FHIR R4 APIs, featuring attribute-based access and audit logging.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">mTLS Ingress</span>
-              <span class="template-tech-tag">HL7 FHIR R4</span>
-              <span class="template-tech-tag">AWS KMS Envelope</span>
-              <span class="template-tech-tag">Immutable Audit</span>
-              <span class="template-tech-tag">HIPAA 45 CFR</span>
+              <span class="template-tech-tag">FHIR R4 REST API</span><span class="template-tech-tag">SMART on FHIR</span><span class="template-tech-tag">PHI Access Control</span><span class="template-tech-tag">HL7 v2 ADT</span><span class="template-tech-tag">Encrypted Store</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('healthcare_portal', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('healthcare_portal', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('healthcare_portal', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 8. Enterprise Zero-Trust Identity & Access Governance -->
-        <div class="template-card" data-cat="security" data-keywords="zero trust iam identity saml oidc opa rego scim fido2 rbac">
+
+        <div class="template-card" data-cat="security" data-keywords="zero_trust_iam security openid connect scim 2.0 opa rego policy device posture spiffe / spire zero-trust identity & access management">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-data">Security &amp; IAM</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-security">Security & Identity</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Enterprise Zero-Trust Identity &amp; Access Governance (IAM)</div>
-            <div class="template-card-desc">Zero-trust security perimeter featuring Cloudflare Access device posture checks, SAML 2.0 / OIDC federation, WebAuthn FIDO2 MFA, Open Policy Agent (OPA) sub-2ms Rego rules, and SCIM directory sync.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Zero-Trust Identity & Access Management</div>
+            <div class="template-card-desc">Enterprise identity governance framework enforcing continuous verification, Open Policy Agent (OPA) fine-grained authorization, device posture scoring, and ephemeral credentials.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Zero-Trust Edge</span>
-              <span class="template-tech-tag">SAML 2.0 / OIDC</span>
-              <span class="template-tech-tag">FIDO2 WebAuthn</span>
-              <span class="template-tech-tag">OPA Rego Policy</span>
-              <span class="template-tech-tag">SCIM 2.0 Sync</span>
+              <span class="template-tech-tag">OpenID Connect</span><span class="template-tech-tag">SCIM 2.0</span><span class="template-tech-tag">OPA Rego Policy</span><span class="template-tech-tag">Device Posture</span><span class="template-tech-tag">SPIFFE / SPIRE</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('zero_trust_iam', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('zero_trust_iam', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('zero_trust_iam', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 9. AI Agent & Enterprise RAG Pipeline -->
-        <div class="template-card" data-cat="ai" data-keywords="ai agent rag vector pgvector qdrant claude context retrieval guardrails semantic cache">
+
+        <div class="template-card" data-cat="ai" data-keywords="ai_agent_rag ai qdrant vector db hybrid search langgraph agent guardrails ai trace log enterprise ai agent & rag platform">
           <div>
             <div class="template-card-top">
-              <span class="template-badge" style="background:#eff6ff;color:#2563eb;border-color:#bfdbfe;">AI &amp; Agents</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-ai">AI & Agents</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Autonomous AI Agent &amp; Enterprise RAG Pipeline</div>
-            <div class="template-card-desc">Zero-trust agentic workflow engine with hybrid dense/sparse vector retrieval, in-vector tenant ACL filtering, tool execution sandbox, and NeMo guardrails.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Enterprise AI Agent & RAG Platform</div>
+            <div class="template-card-desc">Autonomous agent and retrieval-augmented generation platform with pre-retrieval document ACL filtering, semantic vector search, tool guardrails, and execution auditing.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Semantic Cache</span>
-              <span class="template-tech-tag">Hybrid RAG</span>
-              <span class="template-tech-tag">In-Vector ACL</span>
-              <span class="template-tech-tag">gVisor Sandbox</span>
-              <span class="template-tech-tag">Qdrant / pgvector</span>
+              <span class="template-tech-tag">Qdrant Vector DB</span><span class="template-tech-tag">Hybrid Search</span><span class="template-tech-tag">LangGraph Agent</span><span class="template-tech-tag">Guardrails AI</span><span class="template-tech-tag">Trace Log</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('ai_agent_rag', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('ai_agent_rag', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('ai_agent_rag', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 10. Multi-Jurisdiction Global Payroll -->
-        <div class="template-card" data-cat="fintech" data-keywords="payroll global tax multi-jurisdiction gross-to-net garnishment statutory auditable ledger ach sepa">
+
+        <div class="template-card" data-cat="fintech" data-keywords="global_payroll fintech gross-to-net engine versioned rule packs effective dating sepa / ach disburse statutory audit global payroll & tax engine">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-fintech">Fintech &amp; Payroll</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-fintech">Fintech & Payroll</span>
+              <span class="template-spec-pill">Specialized &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Multi-Jurisdiction Global Payroll &amp; Tax Engine</div>
-            <div class="template-card-desc">Deterministic gross-to-net calculation engine with effective-dated compensation structures, statutory tax tables, retro-pay calculations, and dual-authorization batch disbursements.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Global Payroll & Tax Engine</div>
+            <div class="template-card-desc">Deterministic gross-to-net payroll engine supporting versioned jurisdiction rule packs, multi-currency processing, effective-dated contracts, and statutory remittance.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Bi-temporal Tables</span>
-              <span class="template-tech-tag">Gross-to-Net DAG</span>
-              <span class="template-tech-tag">NACHA / SEPA XML</span>
-              <span class="template-tech-tag">Statutory Tax Rules</span>
+              <span class="template-tech-tag">Gross-to-Net Engine</span><span class="template-tech-tag">Versioned Rule Packs</span><span class="template-tech-tag">Effective Dating</span><span class="template-tech-tag">SEPA / ACH Disburse</span><span class="template-tech-tag">Statutory Audit</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('global_payroll', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('global_payroll', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('global_payroll', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 11. LegalTech CLM & Ethical Walls -->
-        <div class="template-card" data-cat="security" data-keywords="legal clm contract lifecycle ethical wall redline docusign court docketing audit">
+
+        <div class="template-card" data-cat="saas" data-keywords="legaltech_clm saas clause library diff / redline engine ethical walls docusign adapter obligations tracker legaltech contract lifecycle management">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-security">Security &amp; Legal</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-saas">LegalTech & Enterprise</span>
+              <span class="template-spec-pill">Intermediate &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">LegalTech CLM, Redlining &amp; Ethical Walls</div>
-            <div class="template-card-desc">High-assurance contract lifecycle management with strict conflict-of-interest ethical walls, tamper-evident redline diffing, DocuSign e-sign webhooks, and court docket tracking.</div>
+            <div class="template-card-title" style="margin-top: 6px;">LegalTech Contract Lifecycle Management</div>
+            <div class="template-card-desc">Enterprise contract management platform covering clause assembly, tracked redlining, multi-tier approval routing, ethical walls, and e-signature envelope tracking.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">Ethical Wall ABAC</span>
-              <span class="template-tech-tag">Tamper Redlines</span>
-              <span class="template-tech-tag">DocuSign HMAC</span>
-              <span class="template-tech-tag">WORM Storage</span>
+              <span class="template-tech-tag">Clause Library</span><span class="template-tech-tag">Diff / Redline Engine</span><span class="template-tech-tag">Ethical Walls</span><span class="template-tech-tag">DocuSign Adapter</span><span class="template-tech-tag">Obligations Tracker</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('legaltech_clm', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('legaltech_clm', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('legaltech_clm', false)">+ Append</button>
             </div>
           </div>
         </div>
 
-        <!-- 12. Global Freight Logistics & Cold-Chain IoT -->
-        <div class="template-card" data-cat="data" data-keywords="logistics supply chain freight iot cold-chain edi 204 214 proof of delivery geofence">
+
+        <div class="template-card" data-cat="ops" data-keywords="logistics_supply_chain ops emqx mqtt timescaledb edi x12 engine geofencing ed25519 cryptographic pod logistics & cold-chain supply chain platform">
           <div>
             <div class="template-card-top">
-              <span class="template-badge template-badge-data">Logistics &amp; IoT</span>
-              <span class="template-spec-pill">4 Zones &middot; 7 Nodes &middot; 3 ERDs &middot; 1 Wireframe</span>
+              <span class="template-badge template-badge-ops">Supply Chain & IoT</span>
+              <span class="template-spec-pill">Advanced &middot; Complete Blueprint</span>
             </div>
-            <div class="template-card-title" style="margin-top: 6px;">Global Freight Logistics &amp; Cold-Chain IoT</div>
-            <div class="template-card-desc">Multi-modal supply chain control tower with real-time MQTT sensor ingestion, geofenced automated detention billing, EDI 204/214 transport pipelines, and cryptographic chain-of-custody POD.</div>
+            <div class="template-card-title" style="margin-top: 6px;">Logistics & Cold-Chain Supply Chain Platform</div>
+            <div class="template-card-desc">Global freight visibility platform tracking multi-modal shipments, IoT sensor cold-chain temperature telemetry, EDI X12 transaction sets, and cryptographic proof-of-delivery.</div>
           </div>
           <div>
             <div class="template-tech-tags">
-              <span class="template-tech-tag">EMQX MQTT Broker</span>
-              <span class="template-tech-tag">PostGIS Geofencing</span>
-              <span class="template-tech-tag">EDI X12 Engine</span>
-              <span class="template-tech-tag">Cryptographic POD</span>
+              <span class="template-tech-tag">EMQX MQTT</span><span class="template-tech-tag">TimescaleDB</span><span class="template-tech-tag">EDI X12 Engine</span><span class="template-tech-tag">Geofencing</span><span class="template-tech-tag">Ed25519 Cryptographic POD</span>
             </div>
             <div class="template-card-footer">
               <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="applyTemplate('logistics_supply_chain', true)">Use Blueprint</button>
-              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('logistics_supply_chain', false)">+ Add</button>
+              <button class="btn" title="Add to current canvas without clearing" onclick="applyTemplate('logistics_supply_chain', false)">+ Append</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -3372,10 +3326,10 @@ Invent scope outside this node. Weaken the constitution. Stub auth/idempotency/a
       div.style.top = item.y + 'px';
       div.style.width = (item.w || 270) + 'px';
 
-      const rowsHTML = (item.columns || []).map(col => `
+      const rowsHTML = (item.columns || item.fields || []).map(col => `
         <div class="erd-row">
           <span class="erd-col-name">
-            ${col.isPk ? '<span class="erd-badge erd-badge-pk">PK</span>' : (col.isFk ? '<span class="erd-badge erd-badge-fk">FK</span>' : '')}
+            ${(col.isPk||col.isPK) ? '<span class="erd-badge erd-badge-pk">PK</span>' : (col.isFk||col.isForeignKey) ? '<span class="erd-badge erd-badge-fk">FK</span>' : ''}
             ${col.name}
           </span>
           <span class="erd-col-type">${col.type}</span>
@@ -3610,6 +3564,85 @@ Invent scope outside this node. Weaken the constitution. Stub auth/idempotency/a
               <button class="btn" style="margin-top: 10px;" onclick="switchScreenState('${item.id}', 'populated')">View Receipt</button>
             </div>
           `;
+        } else if (sType === 'form') {
+          innerHTML = `
+            <div style="margin-bottom:8px;font-size:11px;font-weight:700;color:#0f172a">New Record Form</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div><label style="font-size:9px;color:#64748b;display:block;margin-bottom:2px">Full Name *</label>
+                <div style="height:28px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 8px;line-height:28px;font-size:11px;color:#94a3b8">Alex Chen</div></div>
+              <div><label style="font-size:9px;color:#64748b;display:block;margin-bottom:2px">Email *</label>
+                <div style="height:28px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 8px;line-height:28px;font-size:11px;color:#94a3b8">alex@example.com</div></div>
+              <div><label style="font-size:9px;color:#64748b;display:block;margin-bottom:2px">Role</label>
+                <div style="height:28px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 8px;line-height:28px;font-size:11px;color:#0f172a;display:flex;align-items:center;justify-content:space-between">Member <span style="color:#94a3b8">&#9662;</span></div></div>
+              <div style="display:flex;gap:8px;margin-top:4px">
+                <div style="flex:1;height:30px;background:#2563eb;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;cursor:pointer">Save</div>
+                <div style="height:30px;padding:0 12px;background:#f1f5f9;border-radius:5px;display:flex;align-items:center;color:#64748b;font-size:11px;cursor:pointer">Cancel</div>
+              </div>
+            </div>`;
+        } else if (sType === 'list') {
+          innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="font-size:11px;font-weight:700;color:#0f172a">Records <span style="background:#eff6ff;color:#2563eb;border-radius:9px;padding:1px 7px;font-size:9px;font-weight:700">48</span></div>
+              <div style="height:24px;padding:0 8px;background:#2563eb;border-radius:4px;display:flex;align-items:center;color:#fff;font-size:10px;cursor:pointer">+ New</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;border-radius:6px;overflow:hidden">
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;background:#f8fafc;padding:5px 8px;font-size:9px;font-weight:700;color:#64748b;border-bottom:1px solid #e2e8f0">
+                <span>NAME</span><span>STATUS</span><span>DATE</span>
+              </div>
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px 8px;font-size:10px;border-bottom:1px solid #f1f5f9"><span style="color:#0f172a">Alex Chen</span><span style="color:#059669;font-weight:600">Active</span><span style="color:#64748b">Nov 20</span></div>
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px 8px;font-size:10px;border-bottom:1px solid #f1f5f9;background:#fafafa"><span style="color:#0f172a">Sam Rivera</span><span style="color:#d97706;font-weight:600">Pending</span><span style="color:#64748b">Nov 19</span></div>
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px 8px;font-size:10px"><span style="color:#0f172a">Jo Park</span><span style="color:#059669;font-weight:600">Active</span><span style="color:#64748b">Nov 18</span></div>
+            </div>`;
+        } else if (sType === 'chat') {
+          innerHTML = `
+            <div style="display:flex;flex-direction:column;gap:6px;padding:4px 0">
+              <div style="display:flex;align-items:flex-start;gap:6px">
+                <div style="width:22px;height:22px;border-radius:50%;background:#e0e7ff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#4f46e5;flex-shrink:0">A</div>
+                <div style="background:#f1f5f9;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:10px;color:#0f172a;max-width:80%">Hey! Can you share the latest report?</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:6px;flex-direction:row-reverse">
+                <div style="width:22px;height:22px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#15803d;flex-shrink:0">M</div>
+                <div style="background:#2563eb;border-radius:8px 0 8px 8px;padding:6px 9px;font-size:10px;color:#fff;max-width:80%">Here it is &#8212; just uploaded to the shared drive.</div>
+              </div>
+              <div style="display:flex;gap:5px;margin-top:4px">
+                <div style="flex:1;height:28px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 8px;line-height:28px;font-size:10px;color:#94a3b8">Type a message&#8230;</div>
+                <div style="width:28px;height:28px;background:#2563eb;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;cursor:pointer">&#8593;</div>
+              </div>
+            </div>`;
+        } else if (sType === 'editor') {
+          innerHTML = `
+            <div style="margin-bottom:6px;display:flex;gap:4px;border-bottom:1px solid #e2e8f0;padding-bottom:5px;flex-wrap:wrap">
+              <div style="width:20px;height:20px;border-radius:3px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#374151">B</div>
+              <div style="width:20px;height:20px;border-radius:3px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:9px;font-style:italic;color:#374151">I</div>
+              <div style="width:20px;height:20px;border-radius:3px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:9px;text-decoration:underline;color:#374151">U</div>
+              <div style="width:24px;height:20px;border-radius:3px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#374151">H1</div>
+              <div style="width:30px;height:20px;border-radius:3px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#374151">Code</div>
+            </div>
+            <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:6px">Project Kickoff Notes</div>
+            <div style="font-size:10px;color:#374151;line-height:1.6">
+              Align on scope: MVP by Q4. Three primary user roles confirmed.
+              <div style="margin:4px 0 2px;font-weight:700">Open questions:</div>
+              <div style="padding-left:10px">&#8226; Data residency for EU customers?</div>
+              <div style="padding-left:10px">&#8226; SSO: Auth0 vs WorkOS?</div>
+              <div style="margin-top:5px;color:#94a3b8;font-size:9px;font-style:italic">Last edited by Alex &#183; 2 min ago</div>
+            </div>`;
+        } else if (sType === 'map') {
+          innerHTML = `
+            <div style="background:#e8f4f8;border-radius:6px;position:relative;overflow:hidden;height:140px;margin-bottom:6px">
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,#c8dfe8 0%,#dceef5 50%,#c5dae5 100%)"></div>
+              <div style="position:absolute;top:35%;left:35%;transform:translate(-50%,-50%)">
+                <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>
+                <div style="font-size:8px;background:#fff;border-radius:3px;padding:2px 4px;margin-top:2px;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.2)">HQ &#8212; San Francisco</div>
+              </div>
+              <div style="position:absolute;top:60%;left:65%;transform:translate(-50%,-50%)">
+                <div style="width:8px;height:8px;border-radius:50%;background:#2563eb;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>
+                <div style="font-size:8px;background:#fff;border-radius:3px;padding:2px 4px;margin-top:2px;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.2)">Depot &#8212; Chicago</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:5px">
+              <div style="flex:1;height:26px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 8px;line-height:26px;font-size:10px;color:#94a3b8">Search location&#8230;</div>
+              <div style="height:26px;padding:0 10px;background:#2563eb;border-radius:5px;display:flex;align-items:center;color:#fff;font-size:10px;cursor:pointer">Go</div>
+            </div>`;
         } else {
           innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 6px; border-bottom: 1px solid #f1f5f9;">
@@ -5717,7 +5750,7 @@ Invent scope outside this node. Weaken the constitution. Stub auth/idempotency/a
       // Top: Full-Width Identity & KYC Onboarding Tier
       // Left: Multi-Rail Gateway & Fraud | Center: Double-Entry Ledger Core | Right: 3-Way Recon & Vault
       // =========================================================================
-      if (type === 'fintech_ledger') {
+      else if (type === 'fintech_ledger') {
         titleName = 'C1.1 Neobank & Double-Entry Ledger — spine.saas 1.4 → pack.fintech 2.1';
         newFrames = [
           // Full-width top tier
@@ -6459,83 +6492,191 @@ Invent scope outside this node. Weaken the constitution. Stub auth/idempotency/a
       // 9. B2B MULTI-TENANT ENTERPRISE SAAS (Default Enterprise Grid Topology)
       // WAF Perimeter -> Identity & SCIM -> Domain Microservices & BullMQ -> Citus RLS Sharding
       // =========================================================================
-      else {
-        titleName = 'B2B Multi-Tenant Enterprise SaaS — spine.saas 1.4 (Universal Baseline)';
+      else if (type === 'developer_platform') {
+        titleName = 'Developer API & Webhook Platform — spine.api 1.0';
         newFrames = [
-          { id: 'fr-waf', title: '1. Global Ingress, Cloudflare WAF & Edge CDN', x: offsetX, y: offsetY, w: 500, h: 880 },
-          { id: 'fr-iam', title: '2. Identity, SAML/OIDC SSO & SCIM Directory Provisioning', x: offsetX + 530, y: offsetY, w: 540, h: 880 },
-          { id: 'fr-app', title: '3. Core Domain Microservices, Stripe Billing & Webhooks', x: offsetX + 1100, y: offsetY, w: 540, h: 880 },
-          { id: 'fr-data', title: '4. Citus PostgreSQL (RLS Sharded) & ClickHouse Audit', x: offsetX + 1670, y: offsetY, w: 520, h: 880 }
+          { id: 'fr-dp-gw', title: '1. API Gateway & Authentication', x: offsetX, y: offsetY, w: 500, h: 820 },
+          { id: 'fr-dp-wh', title: '2. Webhook Delivery Engine', x: offsetX+530, y: offsetY, w: 520, h: 820 },
+          { id: 'fr-dp-sdk', title: '3. SDK & Developer Portal', x: offsetX+1080, y: offsetY, w: 460, h: 820 },
+          { id: 'fr-dp-db', title: '4. Event Store & Rate Limiting', x: offsetX+1570, y: offsetY, w: 480, h: 820 }
         ];
-
         newElements = [
-          { id: 'st-b2b1', type: 'sticky', color: '#fef9c3', x: offsetX+20, y: offsetY+50, w: 220, h: 140,
-            tags: ['ADR-001', 'Multi-Tenancy'], reactions: [],
-            content: 'ADR-001: PostgreSQL Row-Level Security (RLS) selected over Schema-per-Tenant. Every connection pool checkout sets app.current_tenant_id; zero cross-tenant leakage.' },
-          { id: 'st-b2b2', type: 'sticky', color: '#fef3c7', x: offsetX+260, y: offsetY+50, w: 220, h: 140,
-            tags: ['ADR-002', 'Idempotency'], reactions: [],
-            content: 'ADR-002: Stripe Webhooks use Redis distributed locks (SETNX) + event idempotency ledger in Postgres. Replays older than 5m rejected immediately.' },
-
-          { id: 'arch-cf', type: 'arch', archType: 'api_gateway', title: 'Cloudflare WAF & Edge CDN', desc: 'DDoS mitigation · bot scoring · TLS 1.3 termination · geo-routing', tags: ['Cloudflare'],
-            x: offsetX+20, y: offsetY+210, w: 460, h: 80 },
-          { id: 'arch-traefik', type: 'arch', archType: 'reverse_proxy', title: 'Traefik Ingress Gateway', desc: 'Rate limiting · path routing · circuit breaker · JWT claim propagation', tags: ['Traefik'],
-            x: offsetX+20, y: offsetY+310, w: 460, h: 80 },
-
-          { id: 'erd-tenant', type: 'erd', tableName: 'tenant', x: offsetX+20, y: offsetY+410, w: 460, h: 220,
+          { id: 'st-dp1', type: 'sticky', color: '#fef9c3', x: offsetX+20, y: offsetY+50, w: 460, h: 120,
+            tags: ['ADR-001', 'Idempotency'], reactions: [],
+            content: 'ADR-001: Every webhook delivery is idempotent. Delivery attempts stored with HMAC-SHA256 signature. Max 3 retries with exponential back-off (1s, 10s, 60s). Replays rejected after 5 min.' },
+          { id: 'arch-dp-kong', type: 'arch', archType: 'api_gateway', title: 'Kong API Gateway', desc: 'JWT auth · API key rotation · rate limiting per tier · request logging', tags: ['Kong', 'REST', 'GraphQL'],
+            x: offsetX+20, y: offsetY+190, w: 460, h: 80 },
+          { id: 'arch-dp-oauth', type: 'arch', archType: 'auth_service', title: 'OAuth 2.0 / API Keys', desc: 'Client credentials flow · scoped API keys · key rotation · revocation webhook', tags: ['OAuth2', 'PKCE'],
+            x: offsetX+20, y: offsetY+290, w: 460, h: 80 },
+          { id: 'erd-dp-apikey', type: 'erd', tableName: 'api_key', x: offsetX+20, y: offsetY+390, w: 460, h: 200,
             fields: [
               { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
-              { name: 'slug', type: 'varchar(63) UNIQUE', nullable: false },
-              { name: 'plan_id', type: 'uuid FK→plans', nullable: false, isForeignKey: true },
-              { name: 'isolation_model', type: 'enum(rls,schema,silo)', nullable: false },
-              { name: 'region', type: 'varchar(16)', nullable: false }
+              { name: 'app_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'key_hash', type: 'varchar(64)', nullable: false },
+              { name: 'scopes', type: 'text[]', nullable: false },
+              { name: 'expires_at', type: 'timestamptz', nullable: true }
             ], relations: [] },
-
-          // Identity
-          { id: 'arch-auth0', type: 'arch', archType: 'auth_service', title: 'Auth0 / WorkOS SSO', desc: 'SAML 2.0 · OIDC · Google Workspace / Okta / Azure AD federation', tags: ['SSO Federation'],
-            x: offsetX+550, y: offsetY+50, w: 500, h: 80 },
-          { id: 'arch-rbac', type: 'arch', archType: 'guardrails', title: 'RBAC + ABAC Policy Engine', desc: 'Fine-grained permissions · tenant context · deny-by-default middleware', tags: ['RBAC Engine'],
-            x: offsetX+550, y: offsetY+145, w: 500, h: 80 },
-          { id: 'arch-scim', type: 'arch', archType: 'microservice', title: 'SCIM 2.0 Directory Sync', desc: 'Automated user provisioning & de-provisioning · atomic access revocation', tags: ['SCIM 2.0'],
-            x: offsetX+550, y: offsetY+240, w: 500, h: 80 },
-
-          { id: 'erd-user', type: 'erd', tableName: 'org_member', x: offsetX+550, y: offsetY+335, w: 500, h: 220,
+          { id: 'wf-dp-portal', type: 'wireframe', screenType: 'developer_portal', x: offsetX+20, y: offsetY+610, w: 460,
+            title: 'Developer Portal Dashboard', route: '/portal', activeState: 'populated', customComponents: [] },
+          { id: 'arch-dp-svix', type: 'arch', archType: 'microservice', title: 'Webhook Dispatcher', desc: 'Fan-out per subscriber · HMAC-SHA256 signing · retry queue · DLQ', tags: ['Webhooks', 'BullMQ'],
+            x: offsetX+550, y: offsetY+50, w: 480, h: 80 },
+          { id: 'arch-dp-redis', type: 'arch', archType: 'redis_cache', title: 'Redis Rate Limit Buckets', desc: 'Token-bucket algorithm per API key · sliding-window counters · burst allowance', tags: ['Redis', 'Rate Limiting'],
+            x: offsetX+550, y: offsetY+150, w: 480, h: 80 },
+          { id: 'erd-dp-event', type: 'erd', tableName: 'webhook_attempt', x: offsetX+550, y: offsetY+250, w: 480, h: 240,
             fields: [
               { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
-              { name: 'tenant_id', type: 'uuid FK→tenant', nullable: false, isForeignKey: true },
-              { name: 'email', type: 'varchar(320)', nullable: false },
-              { name: 'role', type: 'enum(owner,admin,member,viewer)', nullable: false },
-              { name: 'mfa_enabled', type: 'boolean DEFAULT true', nullable: false }
+              { name: 'event_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'endpoint_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'status', type: 'enum(pending,success,failed,dlq)', nullable: false },
+              { name: 'response_code', type: 'integer', nullable: true },
+              { name: 'next_retry_at', type: 'timestamptz', nullable: true }
             ], relations: [] },
-
-          // Domain
-          { id: 'arch-stripe', type: 'arch', archType: 'stripe_billing', title: 'Stripe Billing & Portal', desc: 'Subscription lifecycle · usage tiers · proration · dunning automation', tags: ['Stripe Customer'],
-            x: offsetX+1120, y: offsetY+50, w: 500, h: 80 },
-          { id: 'arch-entitle', type: 'arch', archType: 'microservice', title: 'Entitlements & Quotas', desc: 'Feature gates · usage limits evaluated BEFORE resource allocation', tags: ['Entitlements'],
-            x: offsetX+1120, y: offsetY+145, w: 500, h: 80 },
-          { id: 'arch-bullmq', type: 'arch', archType: 'worker', title: 'BullMQ Async Job Queues', desc: 'Background job processing · exponential backoff · dead-letter queues', tags: ['BullMQ / Redis'],
-            x: offsetX+1120, y: offsetY+240, w: 500, h: 80 },
-
-          { id: 'wf-b2b', type: 'wireframe', screenType: 'dashboard', x: offsetX+1120, y: offsetY+335, w: 500, h: 220,
-            title: 'SCR-001: B2B Multi-Tenant Dashboard & Usage Entitlements', route: '/dashboard',
-            activeState: 'populated-data', customComponents: [],
-            attachedMockup: null, linkedSkills: ['openapi-contract-validator'] },
-
-          // Data & Audit
-          { id: 'arch-citus', type: 'arch', archType: 'postgres', title: 'Citus PostgreSQL Cluster', desc: 'Distributed tables sharded by tenant_id · Row-Level Security active', tags: ['PostgreSQL RLS'],
-            x: offsetX+1690, y: offsetY+50, w: 480, h: 80 },
-          { id: 'arch-clickhouse-b2b', type: 'arch', archType: 'clickhouse', title: 'ClickHouse Audit Trail', desc: 'Immutable audit log · tamper-evident event streaming', tags: ['ClickHouse'],
-            x: offsetX+1690, y: offsetY+145, w: 480, h: 80 },
-          { id: 'arch-redis-cluster', type: 'arch', archType: 'redis_cache', title: 'Redis Cluster', desc: 'Session storage · distributed locks · leaky-bucket rate limiter', tags: ['Redis Cache'],
-            x: offsetX+1690, y: offsetY+240, w: 480, h: 80 }
+          { id: 'wf-dp-logs', type: 'wireframe', screenType: 'list', x: offsetX+550, y: offsetY+510, w: 480,
+            title: 'Webhook Delivery Log', route: '/portal/webhooks', activeState: 'populated', customComponents: [] },
+          { id: 'arch-dp-docs', type: 'arch', archType: 'microservice', title: 'API Docs (OpenAPI 3.1)', desc: 'Auto-generated · interactive playground · versioned endpoints · changelog', tags: ['OpenAPI', 'Redoc'],
+            x: offsetX+1100, y: offsetY+50, w: 420, h: 80 },
+          { id: 'arch-dp-sandbox', type: 'arch', archType: 'microservice', title: 'Sandbox Environment', desc: 'Isolated test mode · synthetic event injection · response stubbing', tags: ['Sandbox', 'Testing'],
+            x: offsetX+1100, y: offsetY+150, w: 420, h: 80 },
+          { id: 'erd-dp-app', type: 'erd', tableName: 'application', x: offsetX+1100, y: offsetY+250, w: 420, h: 180,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'org_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'name', type: 'varchar(120)', nullable: false },
+              { name: 'is_sandbox', type: 'boolean DEFAULT false', nullable: false }
+            ], relations: [] },
+          { id: 'arch-dp-pg', type: 'arch', archType: 'postgres', title: 'PostgreSQL Event Store', desc: 'Events · delivery attempts · audit log · idempotency keys', tags: ['PostgreSQL', 'JSONB'],
+            x: offsetX+1590, y: offsetY+50, w: 440, h: 80 },
+          { id: 'arch-dp-s3', type: 'arch', archType: 'storage', title: 'S3 Payload Archive', desc: 'Payloads >64KB archived · 90-day retention · signed URL for replay', tags: ['S3', 'Cold Storage'],
+            x: offsetX+1590, y: offsetY+150, w: 440, h: 80 }
         ];
-
         newEdges = [
-          { id: 'e1', from: 'arch-cf', fromPort: 'bottom', to: 'arch-traefik', toPort: 'top', label: 'TLS 1.3 / WAF check', routing: 'orthogonal' },
-          { id: 'e2', from: 'arch-traefik', fromPort: 'right', to: 'arch-auth0', toPort: 'left', label: 'OIDC token verify', routing: 'orthogonal' },
-          { id: 'e3', from: 'arch-auth0', fromPort: 'bottom', to: 'arch-rbac', toPort: 'top', label: 'evaluate roles', routing: 'orthogonal' },
-          { id: 'e4', from: 'arch-rbac', fromPort: 'right', to: 'arch-stripe', toPort: 'left', label: 'verify subscription tier', routing: 'orthogonal' },
-          { id: 'e5', from: 'arch-stripe', fromPort: 'right', to: 'arch-citus', toPort: 'left', label: 'SET app.current_tenant_id', routing: 'orthogonal' }
+          { id: 'e-dp1', from: 'arch-dp-kong', fromPort: 'right', to: 'arch-dp-svix', toPort: 'left', label: 'Verified events', routing: 'orthogonal' },
+          { id: 'e-dp2', from: 'arch-dp-svix', fromPort: 'right', to: 'arch-dp-docs', toPort: 'left', label: 'OpenAPI schema', routing: 'curved' },
+          { id: 'e-dp3', from: 'arch-dp-svix', fromPort: 'bottom', to: 'arch-dp-pg', toPort: 'top', label: 'Store attempts', routing: 'orthogonal' },
+          { id: 'e-dp4', from: 'arch-dp-redis', fromPort: 'right', to: 'arch-dp-svix', toPort: 'left', label: 'Rate limit', routing: 'curved' }
         ];
+
+      } else if (type === 'collab_workspace') {
+        titleName = 'Collaborative Document & Canvas Workspace — spine.collab 1.0';
+        newFrames = [
+          { id: 'fr-cw-rt', title: '1. Real-Time Sync Engine (Yjs CRDT)', x: offsetX, y: offsetY, w: 500, h: 820 },
+          { id: 'fr-cw-ui', title: '2. Editor UI & Presence Awareness', x: offsetX+530, y: offsetY, w: 520, h: 820 },
+          { id: 'fr-cw-perm', title: '3. Workspace Permissions & Sharing', x: offsetX+1080, y: offsetY, w: 480, h: 820 },
+          { id: 'fr-cw-db', title: '4. Document Store & Version Snapshots', x: offsetX+1590, y: offsetY, w: 480, h: 820 }
+        ];
+        newElements = [
+          { id: 'st-cw1', type: 'sticky', color: '#ecfdf5', x: offsetX+20, y: offsetY+50, w: 460, h: 130,
+            tags: ['ADR-001', 'CRDT'], reactions: [],
+            content: 'ADR-001: Yjs CRDT selected for conflict-free document merges. Provider: y-websocket on a dedicated sync server. Offline edits reconcile on reconnect with no data loss. Awareness (cursors/presence) is ephemeral — not persisted to database.' },
+          { id: 'arch-cw-yjs', type: 'arch', archType: 'kafka_cluster', title: 'Yjs WebSocket Sync Server', desc: 'CRDT sync · shared cursor positions · offline support · sub-document updates', tags: ['Yjs', 'CRDT', 'WebSocket'],
+            x: offsetX+20, y: offsetY+200, w: 460, h: 90 },
+          { id: 'arch-cw-redis-pub', type: 'arch', archType: 'redis_cache', title: 'Redis Pub/Sub (Awareness)', desc: 'Ephemeral cursor/presence broadcast across sync server instances', tags: ['Redis', 'Pub/Sub'],
+            x: offsetX+20, y: offsetY+310, w: 460, h: 80 },
+          { id: 'erd-cw-doc', type: 'erd', tableName: 'document', x: offsetX+20, y: offsetY+410, w: 460, h: 240,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'workspace_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'title', type: 'varchar(512)', nullable: false },
+              { name: 'doc_type', type: 'enum(doc,canvas,sheet)', nullable: false },
+              { name: 'ydoc_state', type: 'bytea', nullable: true },
+              { name: 'version', type: 'integer DEFAULT 0', nullable: false }
+            ], relations: [] },
+          { id: 'wf-cw-editor', type: 'wireframe', screenType: 'editor', x: offsetX+550, y: offsetY+50, w: 480,
+            title: 'Collaborative Document Editor', route: '/doc/:id', activeState: 'populated', customComponents: [] },
+          { id: 'wf-cw-chat', type: 'wireframe', screenType: 'chat', x: offsetX+550, y: offsetY+440, w: 480,
+            title: 'Threaded Comments', route: '/doc/:id#comments', activeState: 'populated', customComponents: [] },
+          { id: 'arch-cw-auth', type: 'arch', archType: 'auth_service', title: 'Workspace Auth & Sharing', desc: 'Role-based access · link sharing · guest access with TTL · revocation', tags: ['RBAC', 'Share Links'],
+            x: offsetX+1100, y: offsetY+50, w: 440, h: 80 },
+          { id: 'erd-cw-member', type: 'erd', tableName: 'workspace_member', x: offsetX+1100, y: offsetY+150, w: 440, h: 220,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'workspace_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'user_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'role', type: 'enum(owner,editor,commenter,viewer)', nullable: false },
+              { name: 'joined_at', type: 'timestamptz', nullable: false }
+            ], relations: [] },
+          { id: 'erd-cw-snap', type: 'erd', tableName: 'doc_snapshot', x: offsetX+1100, y: offsetY+390, w: 440, h: 180,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'doc_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'snapshot_at', type: 'timestamptz', nullable: false },
+              { name: 'author_id', type: 'uuid FK', nullable: false, isForeignKey: true }
+            ], relations: [] },
+          { id: 'arch-cw-pg', type: 'arch', archType: 'postgres', title: 'PostgreSQL Document Store', desc: 'Documents · snapshots · sharing permissions · audit log', tags: ['PostgreSQL'],
+            x: offsetX+1610, y: offsetY+50, w: 440, h: 80 },
+          { id: 'arch-cw-s3', type: 'arch', archType: 'storage', title: 'Object Storage (Files & Assets)', desc: 'Uploaded images · PDF exports · version snapshots · signed URL delivery', tags: ['S3', 'CDN'],
+            x: offsetX+1610, y: offsetY+150, w: 440, h: 80 }
+        ];
+        newEdges = [
+          { id: 'e-cw1', from: 'arch-cw-yjs', fromPort: 'bottom', to: 'arch-cw-redis-pub', toPort: 'top', label: 'Awareness broadcast', routing: 'orthogonal' },
+          { id: 'e-cw2', from: 'arch-cw-yjs', fromPort: 'right', to: 'arch-cw-pg', toPort: 'left', label: 'Persist ydoc state', routing: 'curved' },
+          { id: 'e-cw3', from: 'arch-cw-auth', fromPort: 'right', to: 'arch-cw-pg', toPort: 'left', label: 'Permission check', routing: 'orthogonal' }
+        ];
+
+      } else if (type === 'healthcare_portal') {
+        titleName = 'Healthcare Patient Portal & FHIR Integration — spine.health 1.0';
+        newFrames = [
+          { id: 'fr-hp-fhir', title: '1. FHIR R4 Gateway & PHI Boundary', x: offsetX, y: offsetY, w: 500, h: 820 },
+          { id: 'fr-hp-portal', title: '2. Patient Portal & Provider Screens', x: offsetX+530, y: offsetY, w: 520, h: 820 },
+          { id: 'fr-hp-iam', title: '3. Identity, Consent & Audit', x: offsetX+1080, y: offsetY, w: 480, h: 820 },
+          { id: 'fr-hp-data', title: '4. Clinical Data Store & HL7 Events', x: offsetX+1590, y: offsetY, w: 480, h: 820 }
+        ];
+        newElements = [
+          { id: 'st-hp1', type: 'sticky', color: '#fce7f3', x: offsetX+20, y: offsetY+50, w: 460, h: 150,
+            tags: ['DESIGN NOTE', 'HIPAA'], reactions: [],
+            content: 'DESIGN NOTE: This is a design starting point requiring formal risk analysis. HIPAA Security Rule compliance (45 CFR Part 164) requires BAAs with all vendors, PHI encryption at rest and in transit, audit controls, and regular security review by qualified personnel.' },
+          { id: 'arch-hp-fhir', type: 'arch', archType: 'api_gateway', title: 'FHIR R4 REST API (HAPI FHIR)', desc: 'Patient · Observation · Encounter · Condition · MedicationRequest · DocumentReference', tags: ['FHIR R4', 'HL7', 'SMART on FHIR'],
+            x: offsetX+20, y: offsetY+230, w: 460, h: 90 },
+          { id: 'arch-hp-phi', type: 'arch', archType: 'guardrails', title: 'PHI Access Control Layer', desc: 'Attribute-based access · patient consent enforcement · field-level masking', tags: ['PHI Boundary', 'Consent'],
+            x: offsetX+20, y: offsetY+340, w: 460, h: 80 },
+          { id: 'erd-hp-patient', type: 'erd', tableName: 'patient', x: offsetX+20, y: offsetY+440, w: 460, h: 260,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'fhir_id', type: 'varchar(64) UNIQUE', nullable: false },
+              { name: 'mrn', type: 'varchar(32) UNIQUE', nullable: false },
+              { name: 'name_encrypted', type: 'bytea', nullable: false },
+              { name: 'dob_encrypted', type: 'bytea', nullable: false },
+              { name: 'sensitivity_level', type: 'enum(standard,restricted)', nullable: false }
+            ], relations: [] },
+          { id: 'wf-hp-dash', type: 'wireframe', screenType: 'dashboard', x: offsetX+550, y: offsetY+50, w: 480,
+            title: 'Patient Health Dashboard', route: '/portal/health', activeState: 'populated', customComponents: [] },
+          { id: 'wf-hp-appt', type: 'wireframe', screenType: 'list', x: offsetX+550, y: offsetY+440, w: 480,
+            title: 'Appointment Schedule', route: '/portal/appointments', activeState: 'populated', customComponents: [] },
+          { id: 'arch-hp-smart', type: 'arch', archType: 'auth_service', title: 'SMART on FHIR / OIDC', desc: 'Patient-facing login · EHR launch context · scoped access tokens · MFA', tags: ['SMART on FHIR', 'OIDC'],
+            x: offsetX+1100, y: offsetY+50, w: 440, h: 80 },
+          { id: 'arch-hp-consent', type: 'arch', archType: 'microservice', title: 'Consent Manager', desc: 'Granular data-sharing consent · withdrawal · audit trail', tags: ['Consent', 'Audit'],
+            x: offsetX+1100, y: offsetY+150, w: 440, h: 80 },
+          { id: 'erd-hp-audit', type: 'erd', tableName: 'phi_access_log', x: offsetX+1100, y: offsetY+250, w: 440, h: 220,
+            fields: [
+              { name: 'id', type: 'uuid PK', nullable: false, isPK: true },
+              { name: 'accessed_by', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'patient_id', type: 'uuid FK', nullable: false, isForeignKey: true },
+              { name: 'resource_type', type: 'varchar(64)', nullable: false },
+              { name: 'action', type: 'enum(read,write,export,delete)', nullable: false },
+              { name: 'accessed_at', type: 'timestamptz', nullable: false }
+            ], relations: [] },
+          { id: 'arch-hp-pg', type: 'arch', archType: 'postgres', title: 'PostgreSQL Clinical Store', desc: 'PHI encrypted at rest (AES-256) · row-level audit · 7-year retention (proposal)', tags: ['PostgreSQL', 'Encrypted'],
+            x: offsetX+1610, y: offsetY+50, w: 440, h: 80 },
+          { id: 'arch-hp-hl7', type: 'arch', archType: 'microservice', title: 'HL7 v2 ADT Listener', desc: 'ADT A01/A03/A04 admit-discharge-transfer events · FHIR R4 Encounter transform', tags: ['HL7 v2', 'ADT'],
+            x: offsetX+1610, y: offsetY+160, w: 440, h: 80 }
+        ];
+        newEdges = [
+          { id: 'e-hp1', from: 'arch-hp-fhir', fromPort: 'bottom', to: 'arch-hp-phi', toPort: 'top', label: 'PHI gating', routing: 'orthogonal' },
+          { id: 'e-hp2', from: 'arch-hp-smart', fromPort: 'right', to: 'arch-hp-pg', toPort: 'left', label: 'Token validation', routing: 'curved' },
+          { id: 'e-hp3', from: 'arch-hp-consent', fromPort: 'right', to: 'arch-hp-pg', toPort: 'left', label: 'Consent rules', routing: 'orthogonal' },
+          { id: 'e-hp4', from: 'arch-hp-hl7', fromPort: 'left', to: 'arch-hp-pg', toPort: 'right', label: 'FHIR transform', routing: 'curved' }
+        ];
+
+      } else if (type) {
+        // Unknown template ID — explicit safe error (never silently fall through to b2b)
+        titleName = 'Unknown Blueprint: ' + type;
+        newFrames = [{ id: 'fr-err', title: 'Unknown Blueprint: ' + type, x: offsetX, y: offsetY, w: 500, h: 300 }];
+        newElements = [
+          { id: 'st-err', type: 'sticky', color: '#fce7f3', x: offsetX+20, y: offsetY+50, w: 460, h: 180,
+            tags: ['Error'], reactions: [],
+            content: 'Blueprint ID "' + type + '" is not recognised. Valid IDs: b2b_saas · fintech_ledger · event_streaming · ecommerce_marketplace · developer_platform · collab_workspace · healthcare_portal · zero_trust_iam · ai_agent_rag · global_payroll · legaltech_clm · logistics_supply_chain' }
+        ];
+        newEdges = [];
       }
 
       if (replaceBoard) {
