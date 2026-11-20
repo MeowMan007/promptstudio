@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Dev tooling
+.venv
+node_modules
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.ruff_cache
+.mypy_cache
+
+# Test / CI
+tests/
+evals/
+fixtures/
+.github/
+
+# Frontend build artefacts (shipped as HTML strings — not needed in image)
+apps/web/
+apps/mcp/
+apps/worker/
+
+# Local config
+.env
+.env.*
+docker-compose*.yml
+*.log
+
+# Scratch / editor
+*.md
+scratch_*.py
+scratch_*.js
+studio_debug.html
+studio_js_check.js
+
+# OS
+.DS_Store
+Thumbs.db
